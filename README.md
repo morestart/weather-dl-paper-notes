@@ -78,6 +78,7 @@
 
 ### [次季节预报（S2S）](notes/s2s/)
 
+- [瑞士极端降水第 1–3 周降尺度：非配对扩散桥 vs WRF](notes/s2s/117-lima-s2s-extreme-precip-downscaling.md) — 2026-09-10 arXiv v1 独立精读；拆明两次各 48h 事件、IFS 50/WRF 挑 3/扩散采 50 成员、CombiPrecip 1km/6h 与非配对训练。补齐 U-Net/Adam/100 万步、WRF 9→3→1km 配置、原表 2 完整 1–3 周 CRPSS 与表 3–5 第 3 周 W1/谱/SSR；2018 第 3 周 WRF CRPSS **0.32**，2021 则 DDPM ens **0.17** 仅与原 IFS 持平。图 1–12 内容及损失式 (18)/(19) 冲突单列，不把两案例当全年结论。
 - [Dong 等：长江源区 ECMWF 第 1–30 天降水—径流集合预报](notes/s2s/112-dong-yangtze-s2s-precip-streamflow.md) — 2025 HESS 正式论文、正式补表和作者 Zenodo 代码核验；详细拆解 10 成员/1.5°→0.25°/19 通道、残差 CNN+TS/MSE、QM 对照、delta 温度和 XAJ–LSTM 的独立训练。完整记录平均雨量 RMSE 约降 34% 与暴雨仅约降 6%、16–30 天尾部 CDF 压缩、径流 NSE 多负及论文 3×3/联合损失和现行代码 7×7/TS-only 的复现冲突。
 - [RUFCO：GEFSv12 集合第 1–4 周降水的残差 U-Net 概率后处理](notes/s2s/111-rufco-gefs-prism-precip-postprocessing.md) — 2024 AMS 正式论文、NOAA 全文；逐项核验 GEFS/PRISM 的 12 UTC 累积窗、EFI/20 类分箱、ResU-Net＋月份 FiLM＋气候态出口、Optuna 搜索范围、完整四季 RPSS/显著格点覆盖与 FiLM 消融。第 3–4 周技巧仅 0.022–0.034、局地 CSGD 可更优；独立补充 PDF 的内层验证细节未取得。
 - [Horat–Lerch：全球 S2S 双周温度/降水四种 CNN 概率后处理](notes/s2s/110-horat-lerch-global-probabilistic-postprocessing.md) — 2024 AMS 正式论文、2023 开放预印本和作者代码/补图核验；逐项解读 WMO 挑战的 11/51 成员、原 ECMWF 缺成员概率和问题及修正基线、5/6 通道、全局/分块 U-Net 与 BF/TC-CNN、十折训练、完整 RPSS 表、面积加权消融与可靠性 simplex。公开表 0.024 与正式结论 0.025 差异保留，长 lead 技巧极弱且无预训练/微调。
