@@ -98,7 +98,7 @@
 - [Marchuk：潜空间扩散集合](notes/s2s/15-marchuk.md) — 数据时序、VHT 训练与 LoRA 架构辨析。
 - [TelePiT：潜空间物理先验与遥相关注意力](notes/s2s/20-telepit.md) — 数值消融、完整训练参数及原文冲突审计。
 - [OmniCast：跨中期和 S2S 的潜空间生成](notes/s2s/22-omnicast.md) — 两套数据协议、VAE/生成器训练及图表解读。
-- [ReST：站点温度的次季节订正](notes/s2s/11-rest.md) — GEFS/站点资料处理、训练目标与六次独立重复。
+- [ReST：全球次季节降水的地理—季节条件订正](notes/s2s/11-rest.md) — 2026-09-25 按正式论文及 23 页补充材料核对 11 成员均值、站点日值→周降水目标、三层五残差块/逐层通道和 GeoCyclic/SPADE/FiLM、AdamW/Huber/六种子训练、QM/RF/Res34 与概率基线的公平比较；分清前两周增益和第 3–5 周技巧衰减。
 - [基础模型 S2S 微调基准：EGU25 摘要](notes/s2s/13-foundation-finetuning-egu.md) — 摘要级证据，列明未公开的训练/微调参数与结果。
 - [GAN-W2C：降水集合的天气到气候尺度后处理](notes/s2s/16-gan-w2c.md) — 多源网格对齐、生成成员设置与训练资料缺口。
 - [CirT：环形纬圈与频域注意力](notes/s2s/23-cirt.md) — 63 通道、训练超参数、频域操作轴及结构消融。
