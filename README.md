@@ -118,7 +118,7 @@
 - [通用扩散概率降尺度：ERA5→CERRA，给多底座生成 5 km 集合](notes/nowcasting/80-universal-diffusion-downscaling.md) — 2026 Jua 独立方法论文；24M 参数/50 epoch/8×H100 的完整训练与 128 步采样、2014–2023 资料处理和 90h 站点评测，明确原稿样本计数/通道摘要矛盾及无 10–15 天证据。
 - [欧洲站点极端天气检验：EPT-2.1、AIFS 和物理模式](notes/nowcasting/79-jua-europe-extremes.md) — 2026 Jua 主导的独立评测研究；欧洲 1,871 气象站/955 太阳站/4,005 雨量站、十个月对照与 48h 上限，详细拆解滚动去偏、极端阈值、四变量正负分数和缺失的模型训练信息。
 - [WeatherGFM：视觉提示统一气象任务](notes/nowcasting/32-weathergfm.md) — 主实验含 SEVIR 小时级任务；ERA5 附录最长 7 天。
-- [降水临近预报综述](notes/nowcasting/36-nowcasting-survey.md) — 临近预报分类与指标框架。
+- [降水临近预报综述](notes/nowcasting/36-nowcasting-survey.md) — 2026-09-25 补核 2025 *Expert Systems with Applications* 正式书目及开放 v2 的 21 页/7 图/5 表：八套雷达/卫星资料的时间尺度、递归与多帧公式、Table 4 代表模型输入/输出/损失和 Table 5 的 SEVIR/Moving-MNIST 不同任务口径；综述本身没有新的训练/微调阶段，不能把跨原文汇总值当统一重训排行榜。
 - [DAWP：卫星观测空间同化后做全球 72 小时短期预报](notes/nowcasting/74-dawp.md) — 2025 NeurIPS 主会；四模态卫星数据处理、VAE/AIDA/AIWP 三段训练、原创流程图、0–72h 通道误差和 12h 降水 CSI/FAR，以及强阈值误报反例与复现公平性边界。
 - [Transformer-DOP：从多类直接观测做 12 小时预报的原型](notes/nowcasting/75-transformer-dop.md) — 2024 ECMWF 预印本；五类观测数据及角色、掩码预训练到预报微调的结构重绘、图 1–5 证据表与全部未披露的训练/评分参数，不能借后续 GraphDOP/DAWP 的成绩。
 - [GraphDOP 表征探针：多传感器云、观测几何与单半球资料](notes/nowcasting/76-graphdop-representations.md) — 2025 ECMWF 独立研究；2013–2023 多类观测与 SEVIRI-only 另训实验、4×3h 潜步进及滚动微调的证据边界、图 1–10 的定量选摘和无观测半球退化。
