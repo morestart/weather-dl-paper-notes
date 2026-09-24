@@ -25,6 +25,7 @@
 - [NeuralGCM：可微动力与神经参数化](notes/medium-range/44-neuralgcm.md) — 天气评分与多年气候模拟分别阅读。
 - [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 公开 ERA5 预训练、IFS rollout 微调、降水消融。
 - [GraphDOP：卫星/常规观测直达预报](notes/medium-range/47-graphdop.md) — 主证据约 5 天，不能借后续 AIFS-DOP 的 10 天技巧。
+- [10–15 天高温预报的 AI 模型评测](notes/medium-range/17-heat-emulators.md) — 六类系统的回报样本、阈值口径和可比性逐项核对；本研究不训练新模型。
 - [ATLAS：概率中期预报框架](notes/medium-range/18-atlas.md) — 拆开模型变体、数据和训练日程。
 - [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 10.3 天时效与预训练/微调细节。
 - [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 数据、归一化、分阶段训练。
@@ -45,6 +46,13 @@
 - [Marchuk：潜空间扩散集合](notes/s2s/15-marchuk.md) — 数据时序、VHT 训练与 LoRA 架构辨析。
 - [TelePiT：潜空间物理先验与遥相关注意力](notes/s2s/20-telepit.md) — 数值消融、完整训练参数及原文冲突审计。
 - [OmniCast：跨中期和 S2S 的潜空间生成](notes/s2s/22-omnicast.md) — 两套数据协议、VAE/生成器训练及图表解读。
+- [ReST：站点温度的次季节订正](notes/s2s/11-rest.md) — GEFS/站点资料处理、训练目标与六次独立重复。
+- [基础模型 S2S 微调基准：EGU25 摘要](notes/s2s/13-foundation-finetuning-egu.md) — 摘要级证据，列明未公开的训练/微调参数与结果。
+- [GAN-W2C：降水集合的天气到气候尺度后处理](notes/s2s/16-gan-w2c.md) — 多源网格对齐、生成成员设置与训练资料缺口。
+- [CirT：环形纬圈与频域注意力](notes/s2s/23-cirt.md) — 63 通道、训练超参数、频域操作轴及结构消融。
+- [西美国 3D U-Net：S2S 降水后处理](notes/s2s/25-western-us-3d-unet.md) — ECMWF 输入、区域资料、训练与消融设置。
+- [天气—气候桥梁 Perspective](notes/s2s/27-weather-climate-bridge-perspective.md) — 观点文章，分清概念框架与不存在的自有模型成绩。
+- [欧洲天气型的第 3 周技巧窗口](notes/s2s/30-weather-regime-windows.md) — 前兆特征、神经网络变体与交叉验证信息泄漏风险。
 
 ### [短临/小时级与通用模型](notes/nowcasting/)
 
@@ -56,7 +64,7 @@
 - [XiChen：4DVar 梯度驱动观测同化](notes/assimilation/03-xichen.md) — 观测—分析—预报链重绘，分开呈现不同初值条件的性能。
 - [DiffDA：扩散式天气尺度同化](notes/assimilation/33-diffda.md) — 稀疏观测与背景场融合，分开讨论分析和后续预报。
 
-本次公开批次为 **38 篇详细笔记**；另有 **9 篇本地旧版短笔记尚未达到精读标准，暂不上传为完成稿**，2024–2026 全年回溯也未穷尽。因此本仓库仍不能称为“全部完成、无待精读”。[论文追踪表](气象大模型_中期预报论文追踪.md)保留全部 47 条书目与版本历史。
+本次公开批次为 **46 篇独立笔记**，其中会议摘要与 Perspective 按来源等级解读，不冒充完整实验论文；另有 **1 篇本地旧版短笔记尚未达到精读标准，暂不上传为完成稿**（SFNO-HENS/NeuralGCM 的 MJO 遥相关评估，#19）。2024–2026 全年回溯也未穷尽。因此本仓库仍不能称为“全部完成、无待精读”。[论文追踪表](气象大模型_中期预报论文追踪.md)保留全部 47 条书目与版本历史。
 
 ## 阅读笔记约定
 
