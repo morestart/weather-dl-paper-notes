@@ -57,4 +57,4 @@ flowchart LR
 
 建议复现时固定 arXiv **v3**、ERA5/ERA5-T 版本和发布日期，分别报 raw ECMWF、业务订正、单分支 PBC、双分支 PBC 与 MicroDuet；按年份/季节/区域、干旱格点过滤前后拆开 RPSS；用相同发行日历重做与 FuXi-S2S 的公平对照；洪水评估增加独立雨量/径流真值和置信区间。作者已给出[PBC 开源代码](https://github.com/mouatadid/pbc)，但复现实验前仍需核对其 commit 与依赖数据可得性。
 
-[返回仓库首页](../README.md) · [返回总追踪表](../气象大模型_中期预报论文追踪.md)
+[返回仓库首页](../../README.md) · [返回总追踪表](../../气象大模型_中期预报论文追踪.md)
