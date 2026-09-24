@@ -107,7 +107,7 @@
 - [CirT：环形纬圈与频域注意力](notes/s2s/23-cirt.md) — 63 通道、训练超参数、频域操作轴及结构消融。
 - [西美国 3D U-Net：S2S 降水后处理](notes/s2s/25-western-us-3d-unet.md) — ECMWF 输入、区域资料、训练与消融设置。
 - [天气—气候桥梁 Perspective](notes/s2s/27-weather-climate-bridge-perspective.md) — 观点文章，分清概念框架与不存在的自有模型成绩。
-- [欧洲天气型的第 3 周技巧窗口](notes/s2s/30-weather-regime-windows.md) — 前兆特征、神经网络变体与交叉验证信息泄漏风险。
+- [欧洲天气型的第 3 周技巧窗口](notes/s2s/30-weather-regime-windows.md) — 2026-09-25 按原文图 1–8 补齐七型指数/周活跃度、ERA5/ECMWF 处理、MJO/SPV 条件选样、64/16 神经网络和四折训练；纠正**弱 SPV 命中升高但虚警也升、PSS 下降**的旧误读。`NN_all` 七型 MSE 改善 3.0%–9.7%，主导型准确率 28.7%→31.6%；说明事件合成选择偏差及特征选择泄漏。
 - [SFNO-HENS/NeuralGCM：MJO 遥相关评估](notes/s2s/19-mjo-teleconnections-evaluation.md) — 加州大学开放的 43 页全文；447 次回报、58/10/11 成员、VPM 预处理、图 1–13、训练期重叠/不稳定成员及热带初值干预的完整证据。
 
 ### [短临、小时级与短期观测预报](notes/nowcasting/)
