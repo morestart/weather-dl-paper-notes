@@ -68,7 +68,7 @@
 - [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 公开 ERA5 预训练、IFS rollout 微调、降水消融。
 - [AIFS Marine：大气、海表、海冰、海浪联合中期预报](notes/medium-range/52-aifs-marine.md) — ORAS6/ecWAM 数据配对、四变体参数、两阶段训练、补表 S.1 的约束/损失与图 1–14 的负面结果。
 - [GraphDOP：卫星/常规观测直达预报](notes/medium-range/47-graphdop.md) — 主证据约 5 天，不能借后续 AIFS-DOP 的 10 天技巧。
-- [10–15 天高温预报的 AI 模型评测](notes/medium-range/17-heat-emulators.md) — 六类系统的回报样本、阈值口径和可比性逐项核对；本研究不训练新模型。
+- [10–15 天高温预报的 AI 模型评测](notes/medium-range/17-heat-emulators.md) — 2026-09-25 复核 arXiv v1 的 63 页正文及补表：六模型实际版本/输入字段与六热事件窗口、ERA5 四时次气候态、392/196 起报的固定 lead 构造，以及 Tables S4/S6/S8 的逐模型第 10/15 天 RMSE、谱得分、极端面积比、召回和 ETS。FuXi 第 15 天全球 RMSE 3.45 K 仍略优气候态 3.56 K，但谱得分仅 0.09、极端面积仅实况 24%；AIFS/IFS 等对照的真值并不完全相同。该评测不训练或微调模型。
 - [ATLAS：概率中期预报框架](notes/medium-range/18-atlas.md) — 拆开模型变体、数据和训练日程。
 - [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 10.3 天时效与预训练/微调细节。
 - [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 数据、归一化、分阶段训练。
