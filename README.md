@@ -45,7 +45,7 @@
 - [Pangu–WRF：谱约束与海洋混合层耦合的两周台风预报](notes/medium-range/65-pangu-wrf-2week-tc.md) — 2024 同行评审原文；冻结底座与物理参数、五场跨海盆筛选、六组消融、图 1–7 和 14 天路径/强度成绩的可比性。
 - [PuYun：大核注意力卷积与 10 天级联预报](notes/medium-range/66-puyun.md) — 2024 原始预印本；69 字段 ERA5、120k 单步预训练与两次 10k 自回归微调、原创结构图、完整第 10 天性能表与单步消融，明确 2017 验证交叉及未做的 0.1° 微调。
 - [FuXi-Extreme：冻结伏羲底座的五天地表极端后处理](notes/medium-range/67-fuxi-extreme.md) — 2024 正式发表、2023 开放全文；六年 ERA5 与条件 DDPM 的真实训练参数、原创流程图、CSI/SEDI 与 RMSE/ACC 反向权衡、29 次台风回报及 IBTrACS/ERA5 强度结论翻转。
-- [FengWu：长滚动、多模态与扩散集合](notes/medium-range/02-fengwu.md) — 结构重绘、10 天以上技巧证据表和正文/图注口径辨析。
+- [FengWu：长滚动、多模态与扩散集合](notes/medium-range/02-fengwu.md) — 2026-09-25 复核正式正文及 54 页补注：69 字段预处理、六模态融合尺寸、ERA5→业务分析分支和 replay/ENS 的逐阶段 batch/LR/epoch、2020 WeatherBench 数值、极端 Brier 与秩直方图反例；明确论文与当前代码年份/队列容量、正文与补注融合层数冲突。
 - [FuXi Weather：真实卫星观测到 10 天全球预报](notes/medium-range/08-fuxi-weather.md) — 循环同化结构、Z500 技巧时效与逐变量性能表。
 - [FuXi-2.0：小时级与气海表层联合中期预报](notes/medium-range/51-fuxi-2-0.md) — 88 场、6h/1h 双网络、训练超参、能源与台风真值口径。
 - [Aardvark Weather：观测直达格点和站点](notes/medium-range/09-aardvark-weather.md) — 三模块结构、全球与分区性能表及不利结果。
