@@ -53,7 +53,7 @@
 - [Aardvark Weather：观测直达格点和站点](notes/medium-range/09-aardvark-weather.md) — 2026-09-25 按 Nature 正文/38 页补充材料及作者训练脚本深读：多类观测的窗口和处理、E→十级 P→十一 D 的完整训练与微调参数、2018 时间留出/补图 5 新站点空间留出的不同基线、风速负例和代码/论文 epoch 冲突。
 - [Weather Prediction with Diffusion：引导式扩散预报](notes/medium-range/34-diffusion-guided.md) — 2026-09-25 按 28 页 arXiv v1/附录复核：WeatherBench 双线性 5.625°、Z500/T850 min–max 处理、direct/iterative 不同历史帧与 9/14 天边界；U-Net/双时间嵌入、扩散噪声日程、35% 条件训练、单 A100/batch32/20h 及 12/4/40 DDIM 步的不同推理协议。将 T42 增益、T63 失败、气候态 14 天结果和 Fig. 2–8 的证据口径分开；优化器/LR 未披露，不补造。
 - [SOFT：7 天自输出微调](notes/medium-range/31-soft.md) — 中期前段过渡方法，不能误称 10–15 天验证。
-- [CoDiCast：6 天条件扩散](notes/medium-range/35-codicast.md) — 中期前段过渡方法，不能误称 10–15 天验证。
+- [CoDiCast：6 天条件扩散](notes/medium-range/35-codicast.md) — 2026-09-25 改按 **IJCAI 2025 正式论文**和 arXiv v4/附录精读：五变量 ERA5、卷积自编码器→历史条件注意力→四级 U-Net、两阶段 Adam/指数 LR、正式正文 batch64 与附录/公开 notebook batch256 的冲突。完整转录 Table 1 各 lead CoDiCast/IFS RMSE/ACC 和 Table 2 扩散步数—耗时；固定公开源码的 encoder 分支未接输出、交叉注意力方向与论文 Eq. 7 相反，故代码复现待重验。它仅验证 6 天，不可当 10–15 天业务集合技巧。
 - [AIFS：ECMWF 确定性底座](notes/medium-range/41-aifs-base.md) — 2024 研究版的字段、三阶段训练/微调及 10 天评分。
 - [AIFS-CRPS / AIFS ENS v1：近公平 CRPS 集合](notes/medium-range/37-aifs-crps.md) — 逐字段归一化、四阶段优化、15 天集合、46 天外推与业务版别边界。
 - [hy-IFS-ENS：IFS–AIFS 逐成员谱约束混合集合](notes/medium-range/48-hybrid-ifs-aifs-ens.md) — 2026 独立方法论文；预训练/微调、T21/12h 约束、15 天评分及图 1–9 的负面结果。
