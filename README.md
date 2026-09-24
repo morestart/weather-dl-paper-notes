@@ -51,7 +51,7 @@
 - [FuXi Weather：真实卫星观测到 10 天全球预报](notes/medium-range/08-fuxi-weather.md) — 正式 60 页补注重读：五仪器/GNSS-RO 的 8 小时窗口、缺测/归一化/50–350 K 亮温筛选、十二分支 0.7B DA 与 FuXi-Short 2→12 步微调；DA 24k＋4k 更新/逐月 4k 增量参数、70 字段和 Z500 技巧表，并补充 IMERG 降水 RMSE/ACC/偏差的正反证据。
 - [FuXi-2.0：小时级与气海表层联合中期预报](notes/medium-range/51-fuxi-2-0.md) — 88 场、6h/1h 双网络、训练超参、能源与台风真值口径。
 - [Aardvark Weather：观测直达格点和站点](notes/medium-range/09-aardvark-weather.md) — 2026-09-25 按 Nature 正文/38 页补充材料及作者训练脚本深读：多类观测的窗口和处理、E→十级 P→十一 D 的完整训练与微调参数、2018 时间留出/补图 5 新站点空间留出的不同基线、风速负例和代码/论文 epoch 冲突。
-- [Weather Prediction with Diffusion：引导式扩散预报](notes/medium-range/34-diffusion-guided.md) — 结构重绘、9–14 天证据表与引导模式边界。
+- [Weather Prediction with Diffusion：引导式扩散预报](notes/medium-range/34-diffusion-guided.md) — 2026-09-25 按 28 页 arXiv v1/附录复核：WeatherBench 双线性 5.625°、Z500/T850 min–max 处理、direct/iterative 不同历史帧与 9/14 天边界；U-Net/双时间嵌入、扩散噪声日程、35% 条件训练、单 A100/batch32/20h 及 12/4/40 DDIM 步的不同推理协议。将 T42 增益、T63 失败、气候态 14 天结果和 Fig. 2–8 的证据口径分开；优化器/LR 未披露，不补造。
 - [SOFT：7 天自输出微调](notes/medium-range/31-soft.md) — 中期前段过渡方法，不能误称 10–15 天验证。
 - [CoDiCast：6 天条件扩散](notes/medium-range/35-codicast.md) — 中期前段过渡方法，不能误称 10–15 天验证。
 - [AIFS：ECMWF 确定性底座](notes/medium-range/41-aifs-base.md) — 2024 研究版的字段、三阶段训练/微调及 10 天评分。
