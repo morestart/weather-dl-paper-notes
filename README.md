@@ -93,7 +93,7 @@
 - [FengWu-W2S：六小时连续的天气—次季节集合](notes/s2s/54-fengwu-w2s.md) — 78 字段海陆气特征交互、50+40 epoch 训练/微调、双扰动与 42 天图表的负技巧区。
 - [热带松弛实验：Pangu/NeuralGCM 的第 3–4 周强降水事件](notes/s2s/55-tropical-relaxation-mlwp.md) — 30 成员、两种松弛掩码/变量、逐图 ACC/MAE 和 Rossby 波源负面反例；本文不重新训练模型。
 - [TianXing-S2S：45 天扩散式次季节集合](notes/s2s/21-tianxing-s2s.md) — 逐项整理数据、训练与周平均评分。
-- [AI 模型类比预测：周 3–4 可解释匹配](notes/s2s/12-ai-model-analogs.md) — 类比库、遮罩优化与训练/验证划分。
+- [AI 模型类比预测：周 3–4 可解释匹配](notes/s2s/12-ai-model-analogs.md) — 2026-09-25 核对正式期刊 DOI/卷期与 v3，补齐月/逐日两套 CESM2-LE 和 ERA5 预处理、成员切分、Adam 掩膜训练、周 3–4 图注/正文指标矛盾与 NMME Table S4 原始技巧值；不同 lead/年份的业务对照不作公平胜负结论。
 - [Swift：一致性模型集合 S2S 预报](notes/s2s/14-swift.md) — 完整训练日程、多步微调和概率评分。
 - [Marchuk：潜空间扩散集合](notes/s2s/15-marchuk.md) — 数据时序、VHT 训练与 LoRA 架构辨析。
 - [TelePiT：潜空间物理先验与遥相关注意力](notes/s2s/20-telepit.md) — 数值消融、完整训练参数及原文冲突审计。
