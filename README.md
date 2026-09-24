@@ -61,7 +61,7 @@
 - [hy-IFS-ENS：IFS–AIFS 逐成员谱约束混合集合](notes/medium-range/48-hybrid-ifs-aifs-ens.md) — 2026 独立方法论文；预训练/微调、T21/12h 约束、15 天评分及图 1–9 的负面结果。
 - [hy-IFS：确定性 IFS–AIFS 模型层谱约束](notes/medium-range/49-hybrid-ifs-aifs-single.md) — 137 层 AI 的三阶段训练、36h 滚动微调、10 天逐图成绩和物理方案消融。
 - [GDPS-SN：加拿大 GEM–GraphCast 谱约束](notes/medium-range/50-gdps-graphcast-spectral-nudging.md) — 2024 原始路线；13 层权重、DCT 双截断、两季 10 天验证及强天气尾部。
-- [EPT-2 / EPT-2e：动态 lead 与能源变量集合](notes/medium-range/38-ept-2.md) — Jua 欧洲企业系列，公开主评测到 240h。
+- [EPT-2 / EPT-2e：动态 lead 与能源变量集合](notes/medium-range/38-ept-2.md) — 2026-09-25 按 arXiv v1 正文及原图 1–15 深化：区分训练资料未公开与 2023 HRES IC/WeatherReal 站点评测，补录 **8×H100×10 天**预训练、动态 lead/参数/扰动/微调细节的未披露边界，并逐图记录格点气温约 130h、站点前 100–120h 的反例。100 亿参数是其它规模变体而非评分版；CRPS 印刷式与标准公式不符，20 天业务输出不等于公开 10 天技巧验证。
 - [EPT-1.5：欧洲能源场景与 10 天格点/站点评测](notes/medium-range/45-ept-1-5.md) — 业务规格 20 天与实际公开验证 10 天分开。
 - [FuXi-ENS：15 天流依赖集合](notes/medium-range/39-fuxi-ens.md) — 与确定性 FuXi 和 FuXi Weather 分篇。
 - [AIFS-DOP：观测直达十天中期预报](notes/medium-range/42-aifs-dop.md) — 2026-09-25 复核 arXiv v1 图 1–10/附录 A–C：逐仪器年份、O96/6h 格点化与输入填均值/标签遮罩、1981–2020 单步训练→2002–2020 最长 72h 滚动微调→四轮约 30h 起报暖启动；完整区分探空/SYNOP 全年评分和 Eunice/低压个例、夏冬季节图，记录第十天北半球 ACC 高约 2–3% 而第五天 Z500 可低约 0.5%。原文未披露此权重的优化器/LR/batch/参数量，通用 Anemoi 配置不能代填；FDR/业务时延及观测网络变化仍是复现边界。
