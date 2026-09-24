@@ -1,6 +1,6 @@
 # TianQuan-S2S：气候态注意力融合与逐层随机扰动的 15–45 天预报
 
-> Guowen Li、Xintong Liu、Yang Liu、Mengxuan Chen、Shilei Cao 等，*TianQuan-S2S: A Subseasonal-to-Seasonal Global Weather Model via Incorporate Climatology State*，arXiv:2504.09940，初版 2025-04-14；本笔记据 [v6，2026-03-12](https://arxiv.org/html/2504.09940v6)，阅读于 2026-09-24。[作者代码](https://github.com/zhangminglang42/TianQuan)。旧追踪表仍用早期名称 “TianQuan-Climate”；以 v6 名称及实验为准，尚不能视为同行评审定稿。
+> Guowen Li、Xintong Liu、Yang Liu、Mengxuan Chen、Shilei Cao 等，*TianQuan-S2S: A Subseasonal-to-Seasonal Global Weather Model via Incorporate Climatology State*，arXiv:2504.09940，初版 2025-04-14；本笔记据 [v6，2026-03-12](https://arxiv.org/html/2504.09940v6) 阅读于 2026-09-24。该作已列入 [ICLR 2026 正式论文列表](https://iclr.cc/virtual/2026/papers.html)；[作者项目页](https://github.com/zhangminglang42/TianQuan)截至本次核对仍说明训练代码尚未公开。旧追踪表使用早期名称 “TianQuan-Climate”；以下实验数值以 v6 为准，不默认等同于会议定稿每项表格。
 
 ## 核心判断
 
