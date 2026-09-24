@@ -102,7 +102,7 @@
 - [OmniCast：跨中期和 S2S 的潜空间生成](notes/s2s/22-omnicast.md) — 两套数据协议、VAE/生成器训练及图表解读。
 - [ReST：全球次季节降水的地理—季节条件订正](notes/s2s/11-rest.md) — 2026-09-25 按正式论文及 23 页补充材料核对 11 成员均值、站点日值→周降水目标、三层五残差块/逐层通道和 GeoCyclic/SPADE/FiLM、AdamW/Huber/六种子训练、QM/RF/Res34 与概率基线的公平比较；分清前两周增益和第 3–5 周技巧衰减。
 - [已撤回记录：EGU25-14848 基础模型 S2S 微调基准](notes/s2s/13-foundation-finetuning-egu.md) — 2026-09-25 EGU 官方日程核实 **withdrawn**；仅保留旧条目排除记录，不计作实证论文，不把原摘要的“24.32 m MSE”当作可核验性能。
-- [GAN-W2C：降水集合的天气到气候尺度后处理](notes/s2s/16-gan-w2c.md) — 多源网格对齐、生成成员设置与训练资料缺口。
+- [GAN-W2C：降水集合的天气到气候尺度后处理](notes/s2s/16-gan-w2c.md) — 2026-09-25 核对 19 页正式 PDF 与作者固定源码：0.1°/0.25°/1° 数据链、`5 ln(x+1)` 降水变换、双编码器/双生成器/双域判别器及多成员均值/逐成员损失；论文 2002–2013 与当前脚本 2010–2013 训练期、正文 PatchGAN 与代码默认 scalar、补充表下载 403 均明示，不把类默认超参当最终配置。纠正“仅第 3 天三倍采样”为 **≤3 天**，分解 Figure 4 的 CRPS/BS、周 3 技巧与长时效欠离散。
 - [CirT：环形纬圈与频域注意力](notes/s2s/23-cirt.md) — 63 通道、训练超参数、频域操作轴及结构消融。
 - [西美国 3D U-Net：S2S 降水后处理](notes/s2s/25-western-us-3d-unet.md) — ECMWF 输入、区域资料、训练与消融设置。
 - [天气—气候桥梁 Perspective](notes/s2s/27-weather-climate-bridge-perspective.md) — 观点文章，分清概念框架与不存在的自有模型成绩。
