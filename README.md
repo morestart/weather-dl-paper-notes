@@ -87,7 +87,7 @@
 - [Xaurora：谱一致性 S2S 微调](notes/s2s/05-xaurora-egu-abstract.md) — EGU 摘要级解读；不填造性能数字。
 - [ESFM S2S 策略：多尾、LoRA 与慢变量注意力](notes/s2s/06-esfm-s2s-egu-abstract.md) — EGU 摘要及海报解读，记录 38 天/96 成员实例。
 - [基础模型+MSWEP 的 S2S 降水](notes/s2s/07-s2s-precip-egu-abstract.md) — EGU 摘要级解读，厘清九年比较计划与未披露的结果。
-- [PBC：S2S 概率偏差订正](notes/s2s/10-pbc-subseasonal.md) — 按 v3 新题名精读，含双分支概率校准结构图和竞赛口径。
+- [PBC：S2S 概率偏差订正](notes/s2s/10-pbc-subseasonal.md) — 2026-09-25 按 v3 方法/算法和作者源码补齐五分位 CDF 的资料/阈值链、20 年滑窗与三年调参、逐格五特征最小二乘、四类不同成员/发行协议及显著性样本数；区分 PBC 统计拟合和 PoET 神经训练，标注滞后公式符号冲突。
 - [FuXi-S2S：42 天日均集合](notes/s2s/40-fuxi-s2s.md) — 2024 正式论文；76 通道、课程训练参数与 MJO 评测口径。
 - [AIFS-SUBS：第 2–6 周概率集合](notes/s2s/53-aifs-subs.md) — 24h 两帧、ERA5/业务分析双版训练、五年回报与 29 周竞赛，含 MJO/SSW 及负面成绩。
 - [FengWu-W2S：六小时连续的天气—次季节集合](notes/s2s/54-fengwu-w2s.md) — 78 字段海陆气特征交互、50+40 epoch 训练/微调、双扰动与 42 天图表的负技巧区。
