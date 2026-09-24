@@ -64,7 +64,7 @@
 - [EPT-2 / EPT-2e：动态 lead 与能源变量集合](notes/medium-range/38-ept-2.md) — Jua 欧洲企业系列，公开主评测到 240h。
 - [EPT-1.5：欧洲能源场景与 10 天格点/站点评测](notes/medium-range/45-ept-1-5.md) — 业务规格 20 天与实际公开验证 10 天分开。
 - [FuXi-ENS：15 天流依赖集合](notes/medium-range/39-fuxi-ens.md) — 与确定性 FuXi 和 FuXi Weather 分篇。
-- [AIFS-DOP：观测直达中期](notes/medium-range/42-aifs-dop.md) — 逐仪器数据期、缺测处理、三天 rollout 微调及 10 天验证。
+- [AIFS-DOP：观测直达十天中期预报](notes/medium-range/42-aifs-dop.md) — 2026-09-25 复核 arXiv v1 图 1–10/附录 A–C：逐仪器年份、O96/6h 格点化与输入填均值/标签遮罩、1981–2020 单步训练→2002–2020 最长 72h 滚动微调→四轮约 30h 起报暖启动；完整区分探空/SYNOP 全年评分和 Eunice/低压个例、夏冬季节图，记录第十天北半球 ACC 高约 2–3% 而第五天 Z500 可低约 0.5%。原文未披露此权重的优化器/LR/batch/参数量，通用 Anemoi 配置不能代填；FDR/业务时延及观测网络变化仍是复现边界。
 - [GenCast：15 天条件扩散集合](notes/medium-range/43-gencast.md) — 1° 预训练至 0.25° 微调和概率技巧分开核查。
 - [NeuralGCM：可微动力与神经参数化](notes/medium-range/44-neuralgcm.md) — 天气评分与多年气候模拟分别阅读。
 - [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 公开 ERA5 预训练、IFS rollout 微调、降水消融。
