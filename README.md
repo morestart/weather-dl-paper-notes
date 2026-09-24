@@ -73,7 +73,7 @@
 - [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 2026-09-25 按 16 页 arXiv v1 逐页复核：ERA5 4×4 均值到 1°/69 通道、6 亿参数的 768/1536 双尺度 6/20/6 blocks、单步预训练和 15×4 步 RAR 微调的优化设置；同步原图 1–6 的结构/评测口径与 Table I 全部显存、时长、Z500 阈值数值。10.3 天技巧须与 HRES 的 9 天**不同真值**及微调资源代理指标“约 1/200”分开解读。
 - [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 2026-09-25 按 arXiv v1 正文/附录重读：列全 GFS＋HRRR 时空拼接、12 气压层/归一化、图 Transformer→滑窗与三阶段 AdamW/滚动训练，明确不是 ERA5 预训练或原始观测直达。将 293 起报的独立观测 RMSE 与 1426 起报的 AORC/FSS 严格分开，摘录 Table S1 24/120/240h 技巧时间差、图 2–7 的反例及粗分辨率消融 S9–S14；15 天持续优势主要见 10m 风，强降水幅度仍落后 HRRR。
 - [WeatherNext 3：观测增强概率预报](notes/medium-range/28-weathernext3.md) — 多阶段训练和 15 天集合。
-- [ERDM：扩散式概率天气预报](notes/medium-range/29-erdm.md) — 数据、网络、优化步骤和评分。
+- [ERDM：扩散式概率天气预报](notes/medium-range/29-erdm.md) — 2026-09-25 对照 *NeurIPS 2025*、arXiv v3 全文/附录补全：ERA5 69＋6 静态字段与四时次训练/64 起报，逐帧 EDM 噪声/预条件/权重、二阶 Heun＋相关噪声、独立训练与外部 EDM 首窗的边界；完整列出训练 batch/LR/EMA、Table 1 5 成员速度/显存、Table 3 的 3/7/14 天 CRPS 和流体任务 Table 2 消融。纠正原追踪“15 天 50 成员”误记（正式天气评分 10、速度测量 5、流体试验 50）；当前作者仓库仅有待发布占位 README，预处理统计量和权重不可据代码核验。
 
 ### [次季节预报（S2S）](notes/s2s/)
 
