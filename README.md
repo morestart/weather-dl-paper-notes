@@ -71,7 +71,7 @@
 - [10–15 天高温预报的 AI 模型评测](notes/medium-range/17-heat-emulators.md) — 2026-09-25 复核 arXiv v1 的 63 页正文及补表：六模型实际版本/输入字段与六热事件窗口、ERA5 四时次气候态、392/196 起报的固定 lead 构造，以及 Tables S4/S6/S8 的逐模型第 10/15 天 RMSE、谱得分、极端面积比、召回和 ETS。FuXi 第 15 天全球 RMSE 3.45 K 仍略优气候态 3.56 K，但谱得分仅 0.09、极端面积仅实况 24%；AIFS/IFS 等对照的真值并不完全相同。该评测不训练或微调模型。
 - [ATLAS：概率中期预报框架](notes/medium-range/18-atlas.md) — 2026-09-25 按 v1 全文深化：双线性潜场→1.8B 局部解码器与 2.4B/3.3B 三种概率主干的目标、两个噪声样本的谱 CRPS、32 卡 StableAdamW/3 或 6 cycle 训练；原文称 75 通道而列项只计 74。区分 28 起报×56 成员主评分与 46 场×32 成员台风评测、6h/12h 单步耗时，以及图 3–12 的优势、欠离散和学习型 VAE 退化。
 - [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 2026-09-25 按 16 页 arXiv v1 逐页复核：ERA5 4×4 均值到 1°/69 通道、6 亿参数的 768/1536 双尺度 6/20/6 blocks、单步预训练和 15×4 步 RAR 微调的优化设置；同步原图 1–6 的结构/评测口径与 Table I 全部显存、时长、Z500 阈值数值。10.3 天技巧须与 HRES 的 9 天**不同真值**及微调资源代理指标“约 1/200”分开解读。
-- [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 数据、归一化、分阶段训练。
+- [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 2026-09-25 按 arXiv v1 正文/附录重读：列全 GFS＋HRRR 时空拼接、12 气压层/归一化、图 Transformer→滑窗与三阶段 AdamW/滚动训练，明确不是 ERA5 预训练或原始观测直达。将 293 起报的独立观测 RMSE 与 1426 起报的 AORC/FSS 严格分开，摘录 Table S1 24/120/240h 技巧时间差、图 2–7 的反例及粗分辨率消融 S9–S14；15 天持续优势主要见 10m 风，强降水幅度仍落后 HRRR。
 - [WeatherNext 3：观测增强概率预报](notes/medium-range/28-weathernext3.md) — 多阶段训练和 15 天集合。
 - [ERDM：扩散式概率天气预报](notes/medium-range/29-erdm.md) — 数据、网络、优化步骤和评分。
 
