@@ -13,13 +13,14 @@
 - [基础模型+MSWEP 的 S2S 降水](notes/07-s2s-precip-egu-abstract.md) — EGU 摘要级解读，厘清九年比较计划与未披露的结果。
 - [FuXi Weather：真实卫星观测到 10 天全球预报](notes/08-fuxi-weather.md) — 含循环同化结构重绘、Z500 技巧时效与逐变量性能表，并辨析观测窗口和对照口径。
 - [Aardvark Weather：观测直达格点和站点](notes/09-aardvark-weather.md) — 含三模块结构重绘、全球/分区性能表、训练与部署边界及不利结果。
+- [PBC：S2S 概率偏差订正](notes/10-pbc-subseasonal.md) — 按 v3 新题名精读，含双分支概率校准结构图、逐基线性能表与竞赛口径。
 - [SOFT：自输出微调与 7 天自回归天气预报](notes/31-soft.md) — 含模型结构重绘、实验表格和具体局限。
 - [WeatherGFM：用视觉提示统一气象任务](notes/32-weathergfm.md) — 含任务架构重绘、SEVIR 十任务、ERA5 附录和原文不一致处。
 - [DiffDA：扩散模型同化全球大气场](notes/33-diffda.md) — 含循环同化结构重绘、模拟观测结果表和短期预报证据。
 - [Weather Prediction with Diffusion：引导式扩散预报](notes/34-diffusion-guided.md) — 含结构重绘、9–14 天证据表与引导模式边界。
 - [CoDiCast：条件扩散全球预报](notes/35-codicast.md) — 含结构重绘、144 小时性能表与集合校准局限。
 - [降水临近预报综述](notes/36-nowcasting-survey.md) — 含分类地图重绘、指标框架与原文汇总表的可比性辨析。
-- 其余 21 篇的旧版短笔记正在重新核验。它们**尚未达到详细阅读笔记标准**，因此暂不放入仓库主目录。
+- 其余 20 篇的旧版短笔记正在重新核验。它们**尚未达到详细阅读笔记标准**，因此暂不放入仓库主目录。
 - [既有论文追踪表](气象大模型_中期预报论文追踪.md)记录已经发现的工作。2024–2026 全量回溯仍在进行中。
 
 ## 阅读笔记约定
