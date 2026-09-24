@@ -48,7 +48,7 @@
 - [FengWu：长滚动、多模态与扩散集合](notes/medium-range/02-fengwu.md) — 2026-09-25 复核正式正文及 54 页补注：69 字段预处理、六模态融合尺寸、ERA5→业务分析分支和 replay/ENS 的逐阶段 batch/LR/epoch、2020 WeatherBench 数值、极端 Brier 与秩直方图反例；明确论文与当前代码年份/队列容量、正文与补注融合层数冲突。
 - [FuXi Weather：真实卫星观测到 10 天全球预报](notes/medium-range/08-fuxi-weather.md) — 正式 60 页补注重读：五仪器/GNSS-RO 的 8 小时窗口、缺测/归一化/50–350 K 亮温筛选、十二分支 0.7B DA 与 FuXi-Short 2→12 步微调；DA 24k＋4k 更新/逐月 4k 增量参数、70 字段和 Z500 技巧表，并补充 IMERG 降水 RMSE/ACC/偏差的正反证据。
 - [FuXi-2.0：小时级与气海表层联合中期预报](notes/medium-range/51-fuxi-2-0.md) — 88 场、6h/1h 双网络、训练超参、能源与台风真值口径。
-- [Aardvark Weather：观测直达格点和站点](notes/medium-range/09-aardvark-weather.md) — 三模块结构、全球与分区性能表及不利结果。
+- [Aardvark Weather：观测直达格点和站点](notes/medium-range/09-aardvark-weather.md) — 2026-09-25 按 Nature 正文/38 页补充材料及作者训练脚本深读：多类观测的窗口和处理、E→十级 P→十一 D 的完整训练与微调参数、2018 时间留出/补图 5 新站点空间留出的不同基线、风速负例和代码/论文 epoch 冲突。
 - [Weather Prediction with Diffusion：引导式扩散预报](notes/medium-range/34-diffusion-guided.md) — 结构重绘、9–14 天证据表与引导模式边界。
 - [SOFT：7 天自输出微调](notes/medium-range/31-soft.md) — 中期前段过渡方法，不能误称 10–15 天验证。
 - [CoDiCast：6 天条件扩散](notes/medium-range/35-codicast.md) — 中期前段过渡方法，不能误称 10–15 天验证。
