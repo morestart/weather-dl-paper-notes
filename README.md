@@ -18,8 +18,18 @@
 - [AIFS：ECMWF 确定性底座](notes/medium-range/41-aifs-base.md) — 2024 研究版、10 天评分与业务后续版本分开。
 - [AIFS-CRPS：近公平 CRPS 集合](notes/medium-range/37-aifs-crps.md) — 15 天集合、46 天外推、负面变量和离散度证据。
 - [EPT-2 / EPT-2e：动态 lead 与能源变量集合](notes/medium-range/38-ept-2.md) — Jua 欧洲企业系列，公开主评测到 240h。
+- [EPT-1.5：欧洲能源场景与 10 天格点/站点评测](notes/medium-range/45-ept-1-5.md) — 业务规格 20 天与实际公开验证 10 天分开。
 - [FuXi-ENS：15 天流依赖集合](notes/medium-range/39-fuxi-ens.md) — 与确定性 FuXi 和 FuXi Weather 分篇。
 - [AIFS-DOP：观测直达中期](notes/medium-range/42-aifs-dop.md) — 卫星/常规观测至 10 天，按探空和站点验证。
+- [GenCast：15 天条件扩散集合](notes/medium-range/43-gencast.md) — 1° 预训练至 0.25° 微调和概率技巧分开核查。
+- [NeuralGCM：可微动力与神经参数化](notes/medium-range/44-neuralgcm.md) — 天气评分与多年气候模拟分别阅读。
+- [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 公开 ERA5 预训练、IFS rollout 微调、降水消融。
+- [GraphDOP：卫星/常规观测直达预报](notes/medium-range/47-graphdop.md) — 主证据约 5 天，不能借后续 AIFS-DOP 的 10 天技巧。
+- [ATLAS：概率中期预报框架](notes/medium-range/18-atlas.md) — 拆开模型变体、数据和训练日程。
+- [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 10.3 天时效与预训练/微调细节。
+- [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 数据、归一化、分阶段训练。
+- [WeatherNext 3：观测增强概率预报](notes/medium-range/28-weathernext3.md) — 多阶段训练和 15 天集合。
+- [ERDM：扩散式概率天气预报](notes/medium-range/29-erdm.md) — 数据、网络、优化步骤和评分。
 
 ### [次季节预报（S2S）](notes/s2s/)
 
@@ -29,6 +39,7 @@
 - [基础模型+MSWEP 的 S2S 降水](notes/s2s/07-s2s-precip-egu-abstract.md) — EGU 摘要级解读，厘清九年比较计划与未披露的结果。
 - [PBC：S2S 概率偏差订正](notes/s2s/10-pbc-subseasonal.md) — 按 v3 新题名精读，含双分支概率校准结构图和竞赛口径。
 - [FuXi-S2S：42 天日均集合](notes/s2s/40-fuxi-s2s.md) — 2024 正式论文，与 FuXi-ENS 不同。
+- [TianXing-S2S：45 天扩散式次季节集合](notes/s2s/21-tianxing-s2s.md) — 逐项整理数据、训练与周平均评分。
 
 ### [短临/小时级与通用模型](notes/nowcasting/)
 
@@ -40,7 +51,7 @@
 - [XiChen：4DVar 梯度驱动观测同化](notes/assimilation/03-xichen.md) — 观测—分析—预报链重绘，分开呈现不同初值条件的性能。
 - [DiffDA：扩散式天气尺度同化](notes/assimilation/33-diffda.md) — 稀疏观测与背景场融合，分开讨论分析和后续预报。
 
-此刻仓库有 22 篇完成稿。其余 20 篇本地旧版提纲仍须逐篇原文核验，**不计作完成稿**；回溯检索也尚未穷尽。[论文追踪表](气象大模型_中期预报论文追踪.md)保留书目与版本历史。
+本次公开批次预计 **33 篇详细笔记**；另有 **14 篇本地旧版短笔记尚未达到精读标准，暂不上传为完成稿**，2024–2026 全年回溯也未穷尽。因此本仓库仍不能称为“全部完成、无待精读”。[论文追踪表](气象大模型_中期预报论文追踪.md)保留全部 47 条书目与版本历史。
 
 ## 阅读笔记约定
 
