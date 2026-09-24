@@ -97,7 +97,7 @@
 - [TianXing-S2S：45 天扩散式次季节集合](notes/s2s/21-tianxing-s2s.md) — 逐项整理数据、训练与周平均评分。
 - [AI 模型类比预测：周 3–4 可解释匹配](notes/s2s/12-ai-model-analogs.md) — 2026-09-25 核对正式期刊 DOI/卷期与 v3，补齐月/逐日两套 CESM2-LE 和 ERA5 预处理、成员切分、Adam 掩膜训练、周 3–4 图注/正文指标矛盾与 NMME Table S4 原始技巧值；不同 lead/年份的业务对照不作公平胜负结论。
 - [Swift：一致性模型集合 S2S 预报](notes/s2s/14-swift.md) — 2026-09-25 对照 2026 年 *Machine Learning: Earth* 正式版与 arXiv v1：补齐 69 字段/三时距标准化、TrigFlow 一致性与两成员公平 CRPS 的预训练→多步微调、完整优化器/预热/EMA 参数；按正式图号重排 15 天 RMSE/CRPS/SSR、谱和 75 天稳定性，澄清 **39× NFE** 对 **约 30× 墙钟**、4 天 Laura 个例与 S2S 未定量验证。
-- [Marchuk：潜空间扩散集合](notes/s2s/15-marchuk.md) — 数据时序、VHT 训练与 LoRA 架构辨析。
+- [Marchuk：潜空间流匹配集合](notes/s2s/15-marchuk.md) — 2026-09-25 复核 v1 PDF/作者推理源码：84 字段 ERA5、240×121→240×120→15×30 潜变量，16 组局地/全局＝32 blocks、640 维/10 头及 VHT 无训练源码边界；完整转录 15/30 天 RMSE/CRPS 四表、H100 速度和 Tables 6–11 消融，指出 15 天“全面胜小版”与表格反例、30 天 MSLP 弱于气候态。
 - [TelePiT：潜空间物理先验与遥相关注意力](notes/s2s/20-telepit.md) — 数值消融、完整训练参数及原文冲突审计。
 - [OmniCast：跨中期和 S2S 的潜空间生成](notes/s2s/22-omnicast.md) — 两套数据协议、VAE/生成器训练及图表解读。
 - [ReST：全球次季节降水的地理—季节条件订正](notes/s2s/11-rest.md) — 2026-09-25 按正式论文及 23 页补充材料核对 11 成员均值、站点日值→周降水目标、三层五残差块/逐层通道和 GeoCyclic/SPADE/FiLM、AdamW/Huber/六种子训练、QM/RF/Res34 与概率基线的公平比较；分清前两周增益和第 3–5 周技巧衰减。
