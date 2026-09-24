@@ -70,7 +70,7 @@
 - [GraphDOP：卫星/常规观测直达预报](notes/medium-range/47-graphdop.md) — 主证据约 5 天，不能借后续 AIFS-DOP 的 10 天技巧。
 - [10–15 天高温预报的 AI 模型评测](notes/medium-range/17-heat-emulators.md) — 2026-09-25 复核 arXiv v1 的 63 页正文及补表：六模型实际版本/输入字段与六热事件窗口、ERA5 四时次气候态、392/196 起报的固定 lead 构造，以及 Tables S4/S6/S8 的逐模型第 10/15 天 RMSE、谱得分、极端面积比、召回和 ETS。FuXi 第 15 天全球 RMSE 3.45 K 仍略优气候态 3.56 K，但谱得分仅 0.09、极端面积仅实况 24%；AIFS/IFS 等对照的真值并不完全相同。该评测不训练或微调模型。
 - [ATLAS：概率中期预报框架](notes/medium-range/18-atlas.md) — 拆开模型变体、数据和训练日程。
-- [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 10.3 天时效与预训练/微调细节。
+- [Searth Transformer / YanTian](notes/medium-range/24-searth.md) — 2026-09-25 按 16 页 arXiv v1 逐页复核：ERA5 4×4 均值到 1°/69 通道、6 亿参数的 768/1536 双尺度 6/20/6 blocks、单步预训练和 15×4 步 RAR 微调的优化设置；同步原图 1–6 的结构/评测口径与 Table I 全部显存、时长、Z500 阈值数值。10.3 天技巧须与 HRES 的 9 天**不同真值**及微调资源代理指标“约 1/200”分开解读。
 - [Nested-EAGLE：全球–区域嵌套预报](notes/medium-range/26-nested-eagle.md) — 数据、归一化、分阶段训练。
 - [WeatherNext 3：观测增强概率预报](notes/medium-range/28-weathernext3.md) — 多阶段训练和 15 天集合。
 - [ERDM：扩散式概率天气预报](notes/medium-range/29-erdm.md) — 数据、网络、优化步骤和评分。
