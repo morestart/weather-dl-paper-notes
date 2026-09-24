@@ -15,12 +15,12 @@
 - [Weather Prediction with Diffusion：引导式扩散预报](notes/medium-range/34-diffusion-guided.md) — 结构重绘、9–14 天证据表与引导模式边界。
 - [SOFT：7 天自输出微调](notes/medium-range/31-soft.md) — 中期前段过渡方法，不能误称 10–15 天验证。
 - [CoDiCast：6 天条件扩散](notes/medium-range/35-codicast.md) — 中期前段过渡方法，不能误称 10–15 天验证。
-- [AIFS：ECMWF 确定性底座](notes/medium-range/41-aifs-base.md) — 2024 研究版、10 天评分与业务后续版本分开。
-- [AIFS-CRPS：近公平 CRPS 集合](notes/medium-range/37-aifs-crps.md) — 15 天集合、46 天外推、负面变量和离散度证据。
+- [AIFS：ECMWF 确定性底座](notes/medium-range/41-aifs-base.md) — 2024 研究版的字段、三阶段训练/微调及 10 天评分。
+- [AIFS-CRPS：近公平 CRPS 集合](notes/medium-range/37-aifs-crps.md) — 逐字段归一化、四阶段优化、15 天集合与 46 天外推。
 - [EPT-2 / EPT-2e：动态 lead 与能源变量集合](notes/medium-range/38-ept-2.md) — Jua 欧洲企业系列，公开主评测到 240h。
 - [EPT-1.5：欧洲能源场景与 10 天格点/站点评测](notes/medium-range/45-ept-1-5.md) — 业务规格 20 天与实际公开验证 10 天分开。
 - [FuXi-ENS：15 天流依赖集合](notes/medium-range/39-fuxi-ens.md) — 与确定性 FuXi 和 FuXi Weather 分篇。
-- [AIFS-DOP：观测直达中期](notes/medium-range/42-aifs-dop.md) — 卫星/常规观测至 10 天，按探空和站点验证。
+- [AIFS-DOP：观测直达中期](notes/medium-range/42-aifs-dop.md) — 逐仪器数据期、缺测处理、三天 rollout 微调及 10 天验证。
 - [GenCast：15 天条件扩散集合](notes/medium-range/43-gencast.md) — 1° 预训练至 0.25° 微调和概率技巧分开核查。
 - [NeuralGCM：可微动力与神经参数化](notes/medium-range/44-neuralgcm.md) — 天气评分与多年气候模拟分别阅读。
 - [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 公开 ERA5 预训练、IFS rollout 微调、降水消融。
@@ -39,7 +39,7 @@
 - [ESFM S2S 策略：多尾、LoRA 与慢变量注意力](notes/s2s/06-esfm-s2s-egu-abstract.md) — EGU 摘要及海报解读，记录 38 天/96 成员实例。
 - [基础模型+MSWEP 的 S2S 降水](notes/s2s/07-s2s-precip-egu-abstract.md) — EGU 摘要级解读，厘清九年比较计划与未披露的结果。
 - [PBC：S2S 概率偏差订正](notes/s2s/10-pbc-subseasonal.md) — 按 v3 新题名精读，含双分支概率校准结构图和竞赛口径。
-- [FuXi-S2S：42 天日均集合](notes/s2s/40-fuxi-s2s.md) — 2024 正式论文，与 FuXi-ENS 不同。
+- [FuXi-S2S：42 天日均集合](notes/s2s/40-fuxi-s2s.md) — 2024 正式论文；76 通道、课程训练参数与 MJO 评测口径。
 - [TianXing-S2S：45 天扩散式次季节集合](notes/s2s/21-tianxing-s2s.md) — 逐项整理数据、训练与周平均评分。
 - [AI 模型类比预测：周 3–4 可解释匹配](notes/s2s/12-ai-model-analogs.md) — 类比库、遮罩优化与训练/验证划分。
 - [Swift：一致性模型集合 S2S 预报](notes/s2s/14-swift.md) — 完整训练日程、多步微调和概率评分。
