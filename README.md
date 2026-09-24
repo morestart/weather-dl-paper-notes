@@ -16,7 +16,7 @@
 - [SOFT：7 天自输出微调](notes/medium-range/31-soft.md) — 中期前段过渡方法，不能误称 10–15 天验证。
 - [CoDiCast：6 天条件扩散](notes/medium-range/35-codicast.md) — 中期前段过渡方法，不能误称 10–15 天验证。
 - [AIFS：ECMWF 确定性底座](notes/medium-range/41-aifs-base.md) — 2024 研究版的字段、三阶段训练/微调及 10 天评分。
-- [AIFS-CRPS：近公平 CRPS 集合](notes/medium-range/37-aifs-crps.md) — 逐字段归一化、四阶段优化、15 天集合与 46 天外推。
+- [AIFS-CRPS / AIFS ENS v1：近公平 CRPS 集合](notes/medium-range/37-aifs-crps.md) — 逐字段归一化、四阶段优化、15 天集合、46 天外推与业务版别边界。
 - [EPT-2 / EPT-2e：动态 lead 与能源变量集合](notes/medium-range/38-ept-2.md) — Jua 欧洲企业系列，公开主评测到 240h。
 - [EPT-1.5：欧洲能源场景与 10 天格点/站点评测](notes/medium-range/45-ept-1-5.md) — 业务规格 20 天与实际公开验证 10 天分开。
 - [FuXi-ENS：15 天流依赖集合](notes/medium-range/39-fuxi-ens.md) — 与确定性 FuXi 和 FuXi Weather 分篇。

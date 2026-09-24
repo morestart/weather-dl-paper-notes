@@ -64,4 +64,12 @@ ERA5 1979–2017 用于训练，IFS 业务分析 2016–2023 用于后续微调�
 
 图 4 的谱比较提供对“MSE 平滑”问题的机制证据；图 9 的 spread–RMSE 则是校准警示。复现时应固定相同起报、ERA5/业务分析版本、初值成员、集合规模、观测 QC，并同时报告 CRPS、可靠性曲线、极端阈值及能量谱。尤其要分别重跑 O96/N320 版本，不能把高分辨率结果归给低分辨率训练设置。[原文第 5 节](https://arxiv.org/html/2412.15832)
 
+## 五、与业务 AIFS ENS 的关系：同源但不能混合版本成绩
+
+ECMWF 的 [AIFS ENS v1 实施说明](https://confluence.ecmwf.int/spaces/FCST/pages/540554034/Implementation%2Bof%2BAIFS%2BENS%2Bv1)明确把 **2025-07-01 起运行的 v1** 对应到 AIFS-CRPS 路线，而不是更早试验的扩散式 AIFS ENS DIFF。它采用 N320 约 31 km、13 个气压层、6 小时步、15 天预报，00/06/12/18 UTC 起报，输出 **50 个扰动成员 + 1 个标称 control**。这里 control 只表示初值未扰动，**模型内部仍采样噪声**，因此并非像物理 IFS ENS 那样的完全确定性控制预报。v1 继续使用与 IFS ENS 对应成员匹配的业务集合初值，训练中并没有直接使用观测；这与“由卫星直接做集合预报”的路线不同。[ECMWF 实施说明](https://confluence.ecmwf.int/spaces/FCST/pages/540554034/Implementation%2Bof%2BAIFS%2BENS%2Bv1)
+
+ECMWF [业务回顾](https://www.ecmwf.int/en/newsletter/185/earth-system-science/aifs-ens-becomes-operational)报告了与研究版一致的 **2 成员训练、约 2.29 亿参数**，但业务 scorecard 是另一段实时评估，不能代替论文的 2024-02 至 09 回测。其上层温度、10m 风观测评分仍有弱点；高山复杂地形可能出现 MSL/低层温度异常，干旱区有微量虚假降水，部分高空量集合过度离散。一个阿尔卑斯暴雨个例中 AIFS ENS 对峰值的低估比 IFS ENS 更明显，说明“多数平均分数更好”不能转写为“极端降水幅度一定更好”。[ECMWF 业务回顾 Fig. 2–6 与已知问题](https://www.ecmwf.int/en/newsletter/185/earth-system-science/aifs-ens-becomes-operational)
+
+截至本次阅读，ECMWF [数据说明](https://www.ecmwf.int/en/forecasts/datasets/aifs-machine-learning-data)显示业务 AIFS ENS 已于 **2026-05-12** 从 v1 升级至 v2。本文的训练参数和成绩只适用于所述 AIFS-CRPS 研究模型及有据可追的 v1 路线；不应把 v2 的产品时效/表现倒填进 2024 预印本。若将来另有 v2 论文，应独立立条并核对模型权重和评测期。
+
 [返回首页](../../README.md)
