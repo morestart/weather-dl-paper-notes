@@ -55,6 +55,7 @@
 - [FuXi-Extreme：冻结伏羲底座的五天地表极端后处理](notes/medium-range/67-fuxi-extreme.md) — 2024 正式发表、2023 开放全文；六年 ERA5 与条件 DDPM 的真实训练参数、原创流程图、CSI/SEDI 与 RMSE/ACC 反向权衡、29 次台风回报及 IBTrACS/ERA5 强度结论翻转。
 - [FengWu：长滚动、多模态与扩散集合](notes/medium-range/02-fengwu.md) — 2026-09-25 复核正式正文及 54 页补注：69 字段预处理、六模态融合尺寸、ERA5→业务分析分支和 replay/ENS 的逐阶段 batch/LR/epoch、2020 WeatherBench 数值、极端 Brier 与秩直方图反例；明确论文与当前代码年份/队列容量、正文与补注融合层数冲突。
 - [FuXi Weather：真实卫星观测到 10 天全球预报](notes/medium-range/08-fuxi-weather.md) — 正式 60 页补注重读：五仪器/GNSS-RO 的 8 小时窗口、缺测/归一化/50–350 K 亮温筛选、十二分支 0.7B DA 与 FuXi-Short 2→12 步微调；DA 24k＋4k 更新/逐月 4k 增量参数、70 字段和 Z500 技巧表，并补充 IMERG 降水 RMSE/ACC/偏差的正反证据。另核对[作者 Zenodo 推理归档](https://zenodo.org/records/15762985)：公开单月 ONNX 同化模型与示例脚本，但未公开完整训练、逐月回放和全年循环程序；中非 ACC>0.6 延续 10 天的表述仅适用于 T2M，不能外推全部变量。
+- [FuXiWeather2：真实观测监督、递归同化训练与全球十天预报](notes/medium-range/126-fuxiweather2.md) — 2026 arXiv v1 独立系统；八类微波/红外仪器＋GNSS＋原位观测，RTTOV/折射率旧年补造、Cressman 掩码/置信度编码，ERA5＋点测量联合监督及 40k 预报预训/24k 同化预训/4k 循环展开/1→20 步预报器微调。原创流程图、图 5–20/补图证据表区分各自分析场与共同 ERA5 真值：十天 RMSE 单元胜出 **91.34% vs 85.40%**；台风 3/5 天原文“降幅”分母误用已复算，73 场总体只到五天。分析结果数据集已开放，权重/训练代码未见公开。
 - [FuXi-2.0：小时级与气海表层联合中期预报](notes/medium-range/51-fuxi-2-0.md) — 88 场、6h/1h 双网络、训练超参、能源与台风真值口径。
 - [Aardvark Weather：观测直达格点和站点](notes/medium-range/09-aardvark-weather.md) — 2026-09-25 按 Nature 正文/38 页补充材料及作者训练脚本深读：多类观测的窗口和处理、E→十级 P→十一 D 的完整训练与微调参数、2018 时间留出/补图 5 新站点空间留出的不同基线、风速负例和代码/论文 epoch 冲突。
 - [Weather Prediction with Diffusion：引导式扩散预报](notes/medium-range/34-diffusion-guided.md) — 2026-09-25 按 28 页 arXiv v1/附录复核：WeatherBench 双线性 5.625°、Z500/T850 min–max 处理、direct/iterative 不同历史帧与 9/14 天边界；U-Net/双时间嵌入、扩散噪声日程、35% 条件训练、单 A100/batch32/20h 及 12/4/40 DDIM 步的不同推理协议。将 T42 增益、T63 失败、气候态 14 天结果和 Fig. 2–8 的证据口径分开；优化器/LR 未披露，不补造。
@@ -149,7 +150,7 @@
 
 **#85 版本纠错（2026-09-25）**：上方批次历史长段中“#85 仅按 arXiv 图 1–7、正式正文未核”的旧状态已由[修订后的 #85 笔记](notes/medium-range/85-potential-crps-fair-weather-comparison.md)取代；可检索正式正文覆盖图 1–9 和附录块置换检验，但出版社直连 PDF/表格图像仍未取得。
 
-**当前笔记数：125 篇（2026-09-25）**。上文的“119 篇”是此前公开批次的历史快照，不是当前总数；新收录 #120–#125 见各分类目录及追踪表。三年全年回溯仍在进行，不宣称已穷尽所有气象深度学习论文。
+**当前笔记数：126 篇（2026-09-25）**。上文的“119 篇”是此前公开批次的历史快照，不是当前总数；新收录 #120–#126 见各分类目录及追踪表。三年全年回溯仍在进行，不宣称已穷尽所有气象深度学习论文。
 
 ## 阅读笔记约定
 
