@@ -4,7 +4,7 @@
 
 ## 1. 核心问题
 
-原始天气网格高维，像素空间生成式模型需要在每个自回归步做多次去噪，30 天集合昂贵。Marchuk 复用 LaDCast 的深度压缩自编码器，将 1.5° ERA5 全球 84 通道场压到约 **64× 空间压缩**的潜变量；随后用 276M 参数的 DiT/flow matching 预测未来潜场。它的贡献更像“潜空间生成器 + 时间上下文/训练策略优化”，不是新的观测同化系统。[Methods 3](https://arxiv.org/html/2603.24428)
+原始天气网格高维，像素空间生成式模型需要在每个自回归步做多次去噪，30 天集合昂贵。Marchuk 复用[LaDCast 的深度压缩自编码器](../medium-range/132-ladcast-latent-diffusion-ensemble.md)，将 1.5° ERA5 全球 84 通道场压到约 **64× 空间压缩**的潜变量；随后用 276M 参数的 DiT/flow matching 预测未来潜场。LaDCast 原版是 EDM 潜扩散、默认 1→4 帧/15 天；Marchuk 换成流匹配生成器并延伸到 30 天，二者的数据压缩底座相连，但不能混用生成器训练参数或评分。它的贡献更像“潜空间生成器 + 时间上下文/训练策略优化”，不是新的观测同化系统。[Methods 3](https://arxiv.org/html/2603.24428)
 
 ```mermaid
 flowchart LR
