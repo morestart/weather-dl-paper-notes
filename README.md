@@ -69,7 +69,7 @@
 - [AIFS-DOP：观测直达十天中期预报](notes/medium-range/42-aifs-dop.md) — 2026-09-25 复核 arXiv v1 图 1–10/附录 A–C：逐仪器年份、O96/6h 格点化与输入填均值/标签遮罩、1981–2020 单步训练→2002–2020 最长 72h 滚动微调→四轮约 30h 起报暖启动；完整区分探空/SYNOP 全年评分和 Eunice/低压个例、夏冬季节图，记录第十天北半球 ACC 高约 2–3% 而第五天 Z500 可低约 0.5%。原文未披露此权重的优化器/LR/batch/参数量，通用 Anemoi 配置不能代填；FDR/业务时延及观测网络变化仍是复现边界。
 - [GenCast：15 天条件扩散集合](notes/medium-range/43-gencast.md) — 2026-09-25 按 *Nature* 正式正文与 58 页补充 PDF 重读：84 场和 SST 缺测/静态时钟处理、16 层/512 维/4 头/32-hop 图 Transformer、EDM 20 级/39 次去噪、Table A1–A4 的扩散/AdamW/扰动参数及分辨率微调。逐图分解 CRPS、均值 RMSE、空间池化、极端、风电和台风，区分正式版 97.2%/SST 权重 0.1/固定 ERA5 初值与早期 arXiv v2 的 97.4%/0.01/EDA 初值。
 - [NeuralGCM：可微动力与神经参数化](notes/medium-range/44-neuralgcm.md) — 天气评分与多年气候模拟分别阅读。
-- [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 公开 ERA5 预训练、IFS rollout 微调、降水消融。
+- [AIFS Single 1.1：业务训练更新和边界层](notes/medium-range/46-aifs-single-1-1.md) — 2025 arXiv、2026 GMD 正式版复核：ERA5 260k 步预训练、IFS 分析 1→12 步滚动微调与训练期物理边界；按正式图 5–19 区分数据扩增、降水消融、约 20 个百分点干格点/弱雨分箱差和两次 2025 极端案例，保留案例时效/命名及强雨低估边界。
 - [AIFS Marine：大气、海表、海冰、海浪联合中期预报](notes/medium-range/52-aifs-marine.md) — ORAS6/ecWAM 数据配对、四变体参数、两阶段训练、补表 S.1 的约束/损失与图 1–14 的负面结果。
 - [GraphDOP：卫星/常规观测直达预报](notes/medium-range/47-graphdop.md) — 主证据约 5 天，不能借后续 AIFS-DOP 的 10 天技巧。
 - [10–15 天高温预报的 AI 模型评测](notes/medium-range/17-heat-emulators.md) — 2026-09-25 复核 arXiv v1 的 63 页正文及补表：六模型实际版本/输入字段与六热事件窗口、ERA5 四时次气候态、392/196 起报的固定 lead 构造，以及 Tables S4/S6/S8 的逐模型第 10/15 天 RMSE、谱得分、极端面积比、召回和 ETS。FuXi 第 15 天全球 RMSE 3.45 K 仍略优气候态 3.56 K，但谱得分仅 0.09、极端面积仅实况 24%；AIFS/IFS 等对照的真值并不完全相同。该评测不训练或微调模型。
