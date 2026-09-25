@@ -10,6 +10,7 @@
 
 ### [中期预报](notes/medium-range/)
 
+- [Laxmi：IMERG 卫星降水监督 AIFS 的十五天集合](notes/medium-range/129-laxmi-imerg-aifs-ensemble-precip.md) — 2026-09-23 arXiv v3 正文、Methods 和主图/补图 1–13 精读；逐项拆解 ERA5 两帧初值、IMERG v07 Final 30 分钟率→6 小时累计→守恒重网格、13 层/31 地表字段及三个概率训练阶段（75k/20k/3.1k 步，4 成员 afCRPS）。原创流程图、带出处的 Day 1/10 与风暴性能表；Day 1 对 AIFS-CRPS 的降水 CRPS −19.3%、Day 10 −3.4%，>300 mm/day 极尾仍弱于 IFS。区分 2024 年 94 起报全球 15 天评测与 2024–2025 印度十场风暴，标注 IFS Day 6 后换时次、模型初始化/冻结未披露和专用代码未公开。
 - [AIFS ENS v1 与 IFS ENS：九千余站第 1–15 天风速集合及校准](notes/medium-range/128-kocsis-baran-aifs-ifs-wind-postprocessing.md) — 2026 arXiv v1 的 24 页全文/9 图/附录表独立精读；2025-07–11 的 12 UTC 业务 50 成员、9246 站最近格点与 10 分钟实测，区分 153 日资料和 79 日封存评分。原创实验结构图，逐项拆解 EMOS 截断正态 4 参数/60 日局地 CRPS 优化与 QR 100 动态簇/50 非交叉分位拟合；原始 AIFS 在风速 CRPS 上全时效落后 IFS，后处理后多数中期 lead 差异不显著。转录纬带 Day1/10/15 显著胜站表与 rank/RI，记录 Fig. 9 Day5/10 图注冲突、正文 20/80 与图 25/75 分位冲突；本研究不重训或微调 AIFS，结论不外推 2026 v2。
 - [FuXi-Short 演化扰动：五天台风路径集合与 2000 成员试验](notes/medium-range/125-fuxi-evolved-perturbation-tc-ensemble.md) — 2025-03-29 *npj Climate and Atmospheric Science* 正式全文＋14 页补图；按 ERA5/IFS48r1/TIGGE/IBTrACS 资料链、25 个历史 36h 演化误差→±50→协方差采样重绘结构，逐图解释主图 1–6 与补图 S1–S14，转录 113 次起报 WNP/NA 的路径误差、fair CRPS、BS、早 12h 退步及仅两场的 2000 成员正反结果。底座不训练/微调，FuXi/IFS 初值与追踪器不同；仅评 5 天台风路径，不声称 15 天全变量集合技巧。
 - [东亚五个全球 AI 模型同初值七天评测与多模型平均](notes/medium-range/124-east-asia-five-ai-models-ensemble.md) — 2024-09-28 *npj Climate and Atmospheric Science* 正式论文；补齐 Pangu、FCN2、GraphCast、FuXi、FengWu 的 ERA5 同初值/13 层/6h 运行版别、2023 六个月区域 RMSE/ACC 与 11 场台风路径/强度。正式 Table 1 原图转录代表风暴 96h 精确数值、Table 2 海葵生成时点、Table 3 底座配置，并逐图解释 Fig. 1–8；海葵 QPESUMS >700mm 对 FuXi 130–150mm/GraphCast 约200mm 的负面证据。五模型“集合”仅是确定性场算术均值，本文无重训/微调或概率 CRPS；实际只到 7 天，不当 10–15 天结果。
@@ -152,7 +153,7 @@
 
 **#85 版本纠错（2026-09-25）**：上方批次历史长段中“#85 仅按 arXiv 图 1–7、正式正文未核”的旧状态已由[修订后的 #85 笔记](notes/medium-range/85-potential-crps-fair-weather-comparison.md)取代；可检索正式正文覆盖图 1–9 和附录块置换检验，但出版社直连 PDF/表格图像仍未取得。
 
-**当前笔记数：128 篇（2026-09-25）**。上文的“119 篇”是此前公开批次的历史快照，不是当前总数；新收录 #120–#128 见各分类目录及追踪表。三年全年回溯仍在进行，不宣称已穷尽所有气象深度学习论文。
+**当前笔记数：129 份（2026-09-25）**。上文的“119 篇”是此前公开批次的历史快照，不是当前总数；新收录 #120–#129 见各分类目录及追踪表。129 份包括明确标注为会议摘要、观点或撤回记录的文件，不等于 129 篇完整实验论文。三年全年回溯仍在进行，不宣称已穷尽所有气象深度学习论文。
 
 ## 阅读笔记约定
 
