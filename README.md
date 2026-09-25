@@ -104,7 +104,7 @@
 - [AIFS-SUBS：第 2–6 周概率集合](notes/s2s/53-aifs-subs.md) — 24h 两帧、ERA5/业务分析双版训练、五年回报与 29 周竞赛，含 MJO/SSW 及负面成绩。
 - [FengWu-W2S：六小时连续的天气—次季节集合](notes/s2s/54-fengwu-w2s.md) — 78 字段海陆气特征交互、50+40 epoch 训练/微调、双扰动与 42 天图表的负技巧区。
 - [热带松弛实验：Pangu/NeuralGCM 的第 3–4 周强降水事件](notes/s2s/55-tropical-relaxation-mlwp.md) — 30 成员、两种松弛掩码/变量、逐图 ACC/MAE 和 Rossby 波源负面反例；本文不重新训练模型。
-- [TianXing-S2S：45 天扩散式次季节集合](notes/s2s/21-tianxing-s2s.md) — 逐项整理数据、训练与周平均评分。
+- [TianXing-S2S：45 天扩散式次季节集合](notes/s2s/21-tianxing-s2s.md) — 2026-09-25 补核 v1 的完整主文/补图：81 通道 ERA5 日平均、分组 VQ-VAE→单步扩散→1–10 步 replay 微调、UniPC 15 次推理去噪；重排图注 1–6 的 CRPS/SSR/RMSE/ACC、BSS、两场个例、PIM/Grad-CAM 与 OTB 消融，并分清 S1–S13 的 MJO、180 天稳定性、其他变量及事件。指出正文连续错引图号、S12 图注错引、最佳成员和跨 51/11 成员对照边界；本模型是逐日 45 天，不是只做周平均评分。
 - [AI 模型类比预测：周 3–4 可解释匹配](notes/s2s/12-ai-model-analogs.md) — 2026-09-25 核对正式期刊 DOI/卷期与 v3，补齐月/逐日两套 CESM2-LE 和 ERA5 预处理、成员切分、Adam 掩膜训练、周 3–4 图注/正文指标矛盾与 NMME Table S4 原始技巧值；不同 lead/年份的业务对照不作公平胜负结论。
 - [Swift：一致性模型集合 S2S 预报](notes/s2s/14-swift.md) — 2026-09-25 对照 2026 年 *Machine Learning: Earth* 正式版与 arXiv v1：补齐 69 字段/三时距标准化、TrigFlow 一致性与两成员公平 CRPS 的预训练→多步微调、完整优化器/预热/EMA 参数；按正式图号重排 15 天 RMSE/CRPS/SSR、谱和 75 天稳定性，澄清 **39× NFE** 对 **约 30× 墙钟**、4 天 Laura 个例与 S2S 未定量验证。
 - [Marchuk：潜空间流匹配集合](notes/s2s/15-marchuk.md) — 2026-09-25 复核 v1 PDF/作者推理源码：84 字段 ERA5、240×121→240×120→15×30 潜变量，16 组局地/全局＝32 blocks、640 维/10 头及 VHT 无训练源码边界；完整转录 15/30 天 RMSE/CRPS 四表、H100 速度和 Tables 6–11 消融，指出 15 天“全面胜小版”与表格反例、30 天 MSLP 弱于气候态。
