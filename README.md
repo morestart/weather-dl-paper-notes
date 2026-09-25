@@ -10,6 +10,7 @@
 
 ### [中期预报](notes/medium-range/)
 
+- [东亚五个全球 AI 模型同初值七天评测与多模型平均](notes/medium-range/124-east-asia-five-ai-models-ensemble.md) — 2024-09-28 *npj Climate and Atmospheric Science* 正式论文；补齐 Pangu、FCN2、GraphCast、FuXi、FengWu 的 ERA5 同初值/13 层/6h 运行版别、2023 六个月区域 RMSE/ACC 与 11 场台风路径/强度。正式 Table 1 原图转录代表风暴 96h 精确数值、Table 2 海葵生成时点、Table 3 底座配置，并逐图解释 Fig. 1–8；海葵 QPESUMS >700mm 对 FuXi 130–150mm/GraphCast 约200mm 的负面证据。五模型“集合”仅是确定性场算术均值，本文无重训/微调或概率 CRPS；实际只到 7 天，不当 10–15 天结果。
 - [Pangu-Weather＋DOT：美国第 3–8 天强天气概率](notes/medium-range/123-pangu-dot-severe-weather.md) — 2025-12-18 AMS 在线发表、2026 卷期；冻结 Pangu、以 ERA5/HRES/GFS 三种初值生成 6 小时场，再在 CONUS 80 km 网格另训 8 日因果 Transformer。独立精读列出 SPC 40 km 标签与标准化、DNN/DOT 结构和 SGD/早停全参数，逐项解释正式 Table 1–3 / Fig. 1–11、三模型概率均值的技巧与校准反例；代码/权重 Zenodo 归档已定位但大包未审计。只验证至 Day 8，不冒称 10–15 天或伏羲底座微调。
 - [澳大利亚 AIFS/HRES 站点降水：逐点与空间感知概率订正](notes/medium-range/121-aifs-hres-spatial-precip-calibration.md) — 2026-07-11 JGR: Machine Learning and Computation 正式论文，2026-09-25 新增独立全文/Zenodo 代码精读。完整拆解 AWS 755 站分钟→小时→日 QC、两底座 0.1°/0.25° 重网格和交错月份切分、37 阈值 CRPS 的六个独立后处理器及 Table 1 六组层数/参数/epoch；区分站点 HRES CNN 优势、AIFS 三法接近、GPM 格点 CRA/FSS 反例，标出 CPU/GPU 与 CDF 单调性源码边界。底座不微调，最大只评 10 天。
 - [MAUSAM：南亚季风七种 AI 模型的观测真值评测](notes/medium-range/120-mausam-observation-focused-monsoon-benchmark.md) — 2025 arXiv、2026 JAMES 正式论文，2026-09-25 补漏独立精读；核对 458 站、IMD 约 6955 雨量计、IMERG/INSAT/IBTrACS 的格网与缺测处理，六个确定性模型 2021–2024 每天起报 15 天、GenCast-32/IFS-50 双台风及单起点 90 天统计压力测试。按期刊图 2–11 与附图分开解读站点 MAE 比 ERA5 高 30%–100%、AIFS/GraphCast 依年与 lead 排名交换、极端降水/谱/云和局地短板；明确本文不训练/微调新模型，并保留 2025 AIFS 初始化日和 INSAT 时窗冲突。
@@ -147,7 +148,7 @@
 
 **#85 版本纠错（2026-09-25）**：上方批次历史长段中“#85 仅按 arXiv 图 1–7、正式正文未核”的旧状态已由[修订后的 #85 笔记](notes/medium-range/85-potential-crps-fair-weather-comparison.md)取代；可检索正式正文覆盖图 1–9 和附录块置换检验，但出版社直连 PDF/表格图像仍未取得。
 
-**当前笔记数：123 篇（2026-09-25）**。上文的“119 篇”是此前公开批次的历史快照，不是当前总数；新收录 #120–#123 见各分类目录及追踪表。三年全年回溯仍在进行，不宣称已穷尽所有气象深度学习论文。
+**当前笔记数：124 篇（2026-09-25）**。上文的“119 篇”是此前公开批次的历史快照，不是当前总数；新收录 #120–#124 见各分类目录及追踪表。三年全年回溯仍在进行，不宣称已穷尽所有气象深度学习论文。
 
 ## 阅读笔记约定
 
