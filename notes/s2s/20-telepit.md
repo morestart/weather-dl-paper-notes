@@ -1,6 +1,6 @@
 # TelePiT：将球面编码、多尺度 ODE 与遥相关注意力直接用于第 3–6 周
 
-> Tengfei Lyu、Weijia Zhang、Hao Liu，*Physics-Informed Teleconnection-Aware Transformer for Global Subseasonal-to-Seasonal Forecasting*，[arXiv:2506.08049v3](https://arxiv.org/html/2506.08049)，v3 2025-08-11（初稿 2025-06）；阅读日期：2026-09-24。论文 HTML 首页仍含占位 DOI/会议年份，以下按**预印本**处理，不凭页面模板判断正式出版信息。
+> Tengfei Lyu、Weijia Zhang、Hao Liu，*Physics-Informed Teleconnection-Aware Transformer for Global Subseasonal-to-Seasonal Forecasting*，*KDD 2026*，pp. 1054–1065，DOI [10.1145/3770854.3780198](https://doi.org/10.1145/3770854.3780198)，校方机构库记录 2026-04-20 已发表；实验与表格以下依据开放的 [arXiv:2506.08049v3](https://arxiv.org/html/2506.08049v3)（2025-08-11），代码依据[作者仓库固定提交](https://github.com/tfeilyu/TelePiT/tree/0e6e67285231c6b96cfb040d58f76ce374168528)。初读 2026-09-24；正式书目和代码复核 2026-09-25。**正式发表书目已核验，但 ACM 最终 PDF 未成功取得，不能推定正式版数值与 v3 完全一致。**[HKUST 机构库](https://researchportal.hkust.edu.hk/en/publications/physics-informed-teleconnection-aware-transformer-for-global-subs/)
 
 ## 1. 任务和设计
 
@@ -16,7 +16,9 @@ TelePiT 不是逐日滚动 42 天，而是由初始全球场**直接预测**第 
 | 地表变量 | 2 m 气温、10 m 纬向风和经向风 | 总共 63 通道 |
 | 时间 | 1979–2016 训练、2017 验证、2018 测试；附录另用 2019 样本外检查 | 两段标签分别是天 15–28、29–42 的逐日场平均 |
 
-因此输入可表示为 `63 × 121 × 240`，输出是两个相同空间网格的未来时段平均场。原文未把滑动初值频率、缺测筛选、各通道标准化常数和气候态计算基期写到可直接复刻的程度，应视为再实现时需核验的参数，而不是自行补造。[数据和实验 §4](https://arxiv.org/html/2506.08049v3)
+因此输入可表示为 `63 × 121 × 240`，输出是两个相同空间网格的未来时段平均场。公开配置将高空变量置于 `era5`、三个近地面变量置于 `lra5`，`oras5` 变量列表为空；不能因此把全部 63 通道笼统说成单一 ERA5 文件。数据代码按年份匹配 `YYYYMMDD.zarr`、文件名排序，并对索引 `idx` 取单时刻输入；`lead_time=15,n_step=28` 读取后续 28 个目标文件，前 14 个与后 14 个分别逐格平均成输出。若文件确为连续逐日，才对应天 15–28 和 29–42；代码没有自行检查缺日或逐日间隔。[配置](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/configs/TelePiT.yaml#L10-L23)｜[数据集索引/标签](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/dataset.py#L65-L82)
+
+标准化不是未知：`S2SDataset` 从 `climatology_era5.zarr`、`climatology_lra5.zarr`、`climatology_oras5.zarr` 按变量/层抽取 `mean` 和 `sigma`，输入及每个目标日都做 `(x−mean)/sigma`，**然后**对 14 日的标准化目标求平均。这些气候态文件未随模型代码提供，统计期、是否排除验证/测试年、格点预处理与缺测 QC 仍无法独立审计。代码即使 `oras5_vars=[]` 也试图打开 ORAS5 气候态文件，是部署前要核实的依赖。评估脚本计划在预测后反标准化，但训练入口引用的 `predict.py` 并不存在（见第 3 节）。[数据集标准化](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/dataset.py#L88-L102)｜[逐样本处理](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/dataset.py#L109-L162)
 
 ```mermaid
 flowchart LR
@@ -39,7 +41,7 @@ flowchart LR
 4. **遥相关注意力（TA）**：把纬线状态平均成全局向量，对 `n_p` 个可学习模式作 softmax 加权，再把所得模式投影到 query 空间，并作为各纬线 key 的注意力偏置，强度由 `λ` 控制。模式是从数据学习，**并非直接输入已观测的 MJO、ENSO 或 NAO 指数**；是否代表具体气候遥相关仍需独立验证。[式 14–15](https://arxiv.org/html/2506.08049v3)
 5. **输出头**：尺度间拼接、MLP、LayerNorm 后跨尺度取平均；每条纬线上的两层 MLP 输出 `2 × C × W`，分别重排成两个 14 天平均场。[式 16–19](https://arxiv.org/html/2506.08049v3)
 
-**原文内部不一致**：正文给 ODE 极点零填充、固定步长 Euler，而附录理论分析谈到周期边界与自适应步长。这直接影响复现实验，未见代码或作者澄清时不能替作者选定哪种实现。[正文 §3.2、附录 A.5](https://arxiv.org/html/2506.08049v3)
+**原文内部不一致**：正文给 ODE 极点零填充、固定步长 Euler，而附录理论分析谈到周期边界与自适应步长。公开代码现可确定该版本使用**纬度常数零填充**和 `torchdiffeq.odeint(method='euler',step_size=0.1)`，积分区间 `[0,1]`；这解决了公开实现如何运行的问题，仍不能证明发表模型与这份提交完全同源。求解器异常时退化成 `no_grad` 计算导数的单次 0.1 步，梯度路径不同于正常 ODE。[正文 §3.2、附录 A.5](https://arxiv.org/html/2506.08049v3)｜[ODE 源码](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/models/TelePiT.py#L181-L273)
 
 ### 训练流程、参数及微调
 
@@ -47,16 +49,22 @@ flowchart LR
 
 | 参数/资源 | 公开值 | 未公开或限制 |
 |---|---:|---|
-| 实现 | PyTorch Lightning | 代码版本/种子未在该节完整披露 |
+| 实现 | PyTorch Lightning；公开代码 `seed_everything(42)`、`deterministic=True`、自动统计可见 GPU 数 | 未核验所发布权重与当前源码完全同版 |
 | batch size | 16 | 未交代是单卡还是全局 batch |
-| 隐藏维 | 256 | 论文实验节值 |
-| 学习率 | 0.01 | 优化器、权重衰减、训练轮数和调度器未充分披露 |
-| ODE 系数 `γ` | 0.1 | `Δt`、积分步数未给具体值 |
-| 遥相关系数 `λ` | 0.2 | 附录图 20 给出此参数的灵敏度分析 |
+| 结构 | 256 维；4 个尺度（分解层数 3），每尺度 6 Transformer block、8 heads、MLP ratio 4、drop/attn_drop 0.1 | 代码模型默认值；不等于单一 6 层整网 |
+| 优化器 | AdamW，初始 LR 0.01；β 和 weight decay 未显式覆写，依赖 PyTorch 默认值 | 不能猜测发表实验的所有版本依赖 |
+| 日程 | 最多 200 epoch；CosineAnnealingLR `T_max=500` epoch、`eta_min=0.001`；val loss 十轮无改善早停、保留前三和最近 checkpoint | `T_max` 超过训练上限，因此不能说运行 200 epoch 已降到 `eta_min` |
+| ODE | 扩散系数初始化 0.001、平流 0.01、强迫 0、校正项系数 0.1；导数末端 `tanh(·)×0.5` | 系数是可学习潜空间参数，不对应固定物理扩散率/风速 |
+| ODE 积分 | Euler，积分时间 1.0，固定步长 0.1；极点纬向零填充 | 附录周期边界/自适应求解器叙述与本提交不一致 |
+| 遥相关 | 5 个可学习模式，注意力偏置系数硬编码 0.2 | 没有外部 ENSO/MJO 指数输入；附录图 20 有系数灵敏度 |
 | 训练硬件 | 4 张 GeForce RTX A40 | 完整训练时长未报告 |
 | 复杂度 | 37M 参数、14.5G FLOPs、141.64 MB、32.25 ms/样本 | 条件依赖输入尺寸与硬件，不可直接外推运营成本 |
 
 ClimaX、CirT 按相同设置重新训练；FourCastNetV2、Pangu-Weather、GraphCast 使用 ECMWF AI models 提供的预训练版本，在 A800 80GB 推理。GraphCast 第 5–6 周因显存不足无结果。于是“相同配置”仅适用于部分直接训练的基线，不能推论全部模型已严格统一训练数据、变量集合与算力。[实验 §4、附录 B.2–B.3](https://arxiv.org/html/2506.08049v3)
+
+上述 AdamW/调度/早停来自[训练入口](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/train.py#L69-L109)、[Lightning 封装](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/models/model.py#L88-L140)及[发布配置](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/configs/TelePiT.yaml)，并非正文逐项披露。公开源码中训练损失是标准化标签上的 `MSE()`，验证/早停的 `val_loss` 也用 MSE，而 `test_step` 才用 `RMSE()`；论文纬度加权物理单位 RMSE 是另一个评测层，不能把训练监控指标直接等同 Table 1。[源码训练/验证/测试](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/models/model.py#L78-L119)
+
+**源码复现阻断**：固定提交的 `train.py` 顶层写 `from predict import reverse_normalize`，仓库文件清单没有 `predict.py`；虽然 `step1_predict_to_npy.py` 另有同名函数，不能不改代码就执行入口。此外 `S2S/models/model.py` 无条件导入 `CirT`、`ClimaX`、三个 TelePiT 变体及四个消融模块，公开的 `S2S/models/` 仅有 `TelePiT.py` 和 `model.py`；因此即使只选 TelePiT 也会在导入阶段失败。README Quick Start 的配置路径/CLI 与 `--run_model TelePiT` 实际接口也不一致。这些是**当前公开提交**的可运行性问题，不能反推作者训练时没有内部完整代码，更不能据此把论文报告数值判为伪造。[训练入口](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/train.py#L1-L29)｜[模块导入](https://github.com/tfeilyu/TelePiT/blob/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/models/model.py#L1-L11)｜[源码目录](https://github.com/tfeilyu/TelePiT/tree/0e6e67285231c6b96cfb040d58f76ce374168528/S2S/models)
 
 ## 2. 数值结果与异常核对
 
@@ -84,6 +92,6 @@ ClimaX、CirT 按相同设置重新训练；FourCastNetV2、Pangu-Weather、Grap
 
 ## 3. 阅读判断与复验
 
-思路上，显式把非局地遥相关注入注意力值得与 CirT 的球面归纳偏置、FuXi-S2S 的多变量延伸比较。但当前最重要的是**表格审计**：用同一批原始 ChaosBench 样本重建两个两周平均标签；在逆标准化后重算 T2m 与 Z500 单位；统一 2018 初值、缺测和气候态基期；核查正文/附录两种 ODE 边界与求解器；检查经度平均的信息损失；再用多随机种子验证消融。没有这些复核，数值排序只能记录为作者报告，不能作为可靠模型选型依据。[预印本方法及实验](https://arxiv.org/html/2506.08049v3)
+思路上，显式把非局地遥相关注入注意力值得与 CirT 的球面归纳偏置、FuXi-S2S 的多变量延伸比较。但当前最重要的是**表格审计**：先补全缺失模块/气候态文件并锁定依赖；用同一批 ChaosBench 样本核对连续日期和两个两周平均标签；在逆标准化后重算 T2m 与 Z500 单位；统一 2018 初值、缺测和气候态基期；用公开代码的零边界/固定 Euler 与附录设定分别对照；检查经度平均的信息损失；再用多随机种子验证消融。没有这些复核，v3 数值排序只能记录为作者报告，不能作为可靠模型选型依据。正式书目由 HKUST 核验，正式版实验 PDF 未直接核验。[开放 v3 方法及实验](https://arxiv.org/html/2506.08049v3)｜[正式书目](https://researchportal.hkust.edu.hk/en/publications/physics-informed-teleconnection-aware-transformer-for-global-subs/)
 
 [返回首页](../../README.md) · [返回总表](../../气象大模型_中期预报论文追踪.md)
