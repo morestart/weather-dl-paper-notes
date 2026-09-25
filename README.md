@@ -120,7 +120,7 @@
 - [HiRA × twCRPS：GraphCast-GFS 与 HRRR 的美国极端降水空间评测](notes/nowcasting/86-loveday-hertneky-spatial-extreme-precip.md) — 2025 arXiv、2026-09-08 v3 预印本；ASOS 逐分钟质控、2022–2024 共 973 次起报、表 1 三组原生邻域，详细拆解图 1–9 的普通/极端 CRPS、站点 QQ、样本内辨识力及 24h 后差异不显著的新版限定；只有 6–48h，不冒充中期结果。
 - [通用扩散概率降尺度：ERA5→CERRA，给多底座生成 5 km 集合](notes/nowcasting/80-universal-diffusion-downscaling.md) — 2026 Jua 独立方法论文；24M 参数/50 epoch/8×H100 的完整训练与 128 步采样、2014–2023 资料处理和 90h 站点评测，明确原稿样本计数/通道摘要矛盾及无 10–15 天证据。
 - [欧洲站点极端天气检验：EPT-2.1、AIFS 和物理模式](notes/nowcasting/79-jua-europe-extremes.md) — 2026 Jua 主导的独立评测研究；欧洲 1,871 气象站/955 太阳站/4,005 雨量站、十个月对照与 48h 上限，详细拆解滚动去偏、极端阈值、四变量正负分数和缺失的模型训练信息。
-- [WeatherGFM：视觉提示统一气象任务](notes/nowcasting/32-weathergfm.md) — 主实验含 SEVIR 小时级任务；ERA5 附录最长 7 天。
+- [WeatherGFM：视觉提示统一气象任务](notes/nowcasting/32-weathergfm.md) — 2026-09-25 对照 **ICLR 2025 正式版 21 页**及作者固定代码扩写：早期十任务改为正式 **十二任务（十图像＋ERA5 T2m/U10）**，梳理 SEVIR/POMINO 切窗和 ERA5 48 场归一化/填充、专用嵌入→共享 ViT、主训练与 ERA5 续训参数、MSE/L1 与脚本 epoch 冲突。逐图解读 Fig. 1–7、逐 lead 转录 Tables 8–9 两变量 6–168h RMSE/ACC，并标出短 lead IFS 更好、负迁移、优选提示偏差及公开加载器默认 2016 年份重叠风险；不能误作 10–15 天完整系统。
 - [降水临近预报综述](notes/nowcasting/36-nowcasting-survey.md) — 2026-09-25 补核 2025 *Expert Systems with Applications* 正式书目及开放 v2 的 21 页/7 图/5 表：八套雷达/卫星资料的时间尺度、递归与多帧公式、Table 4 代表模型输入/输出/损失和 Table 5 的 SEVIR/Moving-MNIST 不同任务口径；综述本身没有新的训练/微调阶段，不能把跨原文汇总值当统一重训排行榜。
 - [DAWP：卫星观测空间同化后做全球 72 小时短期预报](notes/nowcasting/74-dawp.md) — 2025 NeurIPS 主会；四模态卫星数据处理、VAE/AIDA/AIWP 三段训练、原创流程图、0–72h 通道误差和 12h 降水 CSI/FAR，以及强阈值误报反例与复现公平性边界。
 - [Transformer-DOP：从多类直接观测做 12 小时预报的原型](notes/nowcasting/75-transformer-dop.md) — 2024 ECMWF 预印本；五类观测数据及角色、掩码预训练到预报微调的结构重绘、图 1–5 证据表与全部未披露的训练/评分参数，不能借后续 GraphDOP/DAWP 的成绩。
