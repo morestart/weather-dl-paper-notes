@@ -1,6 +1,8 @@
 # XiChen：以 4DVar 梯度连接异构观测、同化与中期预报
 
-> Wuxin Wang、Weicheng Ni、Ben Fei、Tao Han、Lilan Huang 等，*XiChen: A global weather observation-to-forecast machine learning system via four-dimensional variational gradient-guided flexible assimilation*，arXiv:2507.09202，[v3，2026-02-08](https://arxiv.org/html/2507.09202v3)、[v3 正式 PDF](https://arxiv.org/pdf/2507.09202v3)、[作者代码声明所指仓库](https://github.com/wuxinwang1997/XiChen_1.40625deg)。初稿 v1 为 2025-07-12；本笔记 2026-09-25 对照 v3 正文、方法和图 1–6 补强。它仍是预印本；v3 提及 `Supplementary_Information.pdf`，但本次取得的 v3 arXiv 源码包没有该文件，作者仓库当前也未放出可运行训练配置，因此不把未取得的附录参数写成确定事实。
+> Wuxin Wang、Weicheng Ni、Ben Fei、Tao Han、Lilan Huang、Shuo Ma、Taikang Yuan、Yanlai Zhao、Kefeng Deng、Xiaoyong Li、Hongze Leng、Boheng Duan、Lei Bai、Weimin Zhang、Junqiang Song、Kaijun Ren，*XiChen: A global weather observation-to-forecast machine learning system via four-dimensional variational gradient-guided flexible assimilation*，arXiv:2507.09202，[v3，2026-02-08](https://arxiv.org/html/2507.09202v3)、[v3 PDF](https://arxiv.org/pdf/2507.09202v3)、[作者代码声明所指仓库](https://github.com/wuxinwang1997/XiChen_1.40625deg)。初稿 v1 为 2025-07-12；本笔记 2026-09-25 对照 v3 正文、PDF 首页、方法和图 1–6 复核。它仍是预印本；v3 提及 `Supplementary_Information.pdf`，但本次取得的 v3 arXiv 源码包没有该文件，作者仓库当前也未放出可运行训练配置，因此不把未取得的附录参数写成确定事实。
+
+**书目内部冲突**：上列作者及顺序是我在**v3 PDF 首页实际看到的印刷署名**，与 v3 HTML 首页相符；[arXiv 摘要页](https://arxiv.org/abs/2507.09202)及同一 PDF 的嵌入元数据却将 Lilan Huang、Tao Hao 排在 Ben Fei 前，并把 `Tao Han` 写为 `Tao Hao`。这不是可以凭搜索结果擅自改写的拼写小差异。引用本笔记的**v3 方法和图**时采用该版本可见首页的 `Tao Han`，同时保留索引元数据冲突；若用于正式参考文献，需在作者确认或正式发表后再核对。
 
 ## 核心判断与版本纠偏
 
@@ -37,7 +39,7 @@ flowchart LR
 
 预报主干以约 **12 年 ERA5、1.40625°** 数据训练，采用纬度/变量加权 L1；对比 Pangu、GraphCast、FengWu 等 0.25° 模型时应记住训练网格和初始场条件并不相同。作者报告预训练用 8 张 A100-40GB 约 45 小时、预报微调约 94 小时；每个卫星观测算子微调约 13.3 小时。以上是训练阶段成本，不是端到端推理延迟。[方法 4.4–4.5](https://arxiv.org/html/2507.09202v3)
 
-物理一致性证据之一是 2023-07-24 台风杜苏芮附近对单个 AMSU-A/MHS 通道施加 +5 K 扰动：温度敏感通道产生相应温度增量，湿度敏感通道改变水汽，响应沿水平和垂直及背景流传播。它检验的是局部观测敏感性和一定的流依赖特征；一个案例与若干通道不能单独证明所有卫星资料、所有天气型的动力平衡。作者在讨论中也承认仍有场平滑。[结果 2.1、图 2](https://arxiv.org/html/2507.09202v3)
+物理一致性证据之一是 2023-07-24 台风杜苏芮附近 **20°N、120°E** 对单个 AMSU-A 5/6/7 或 MHS 3/4/5 通道分别施加 **+5 K** 扰动：温度敏感通道产生相应温度增量，MHS 湿度敏感通道使比湿减小，响应沿水平和垂直及背景流传播。它检验的是局部观测敏感性和一定的流依赖特征；一个案例与六个通道不能单独证明所有卫星资料、所有天气型的动力平衡。**原文 §2.1 称同化时次为 00 UTC，Figure 2 图注又称扰动在 03 UTC**；这里不替作者推断一个唯一时刻。作者在讨论中也承认仍有场平滑。[结果 §2.1、Figure 2](https://arxiv.org/html/2507.09202v3)
 
 ### 2.1 数据进入网络前具体做了什么
 
@@ -56,7 +58,7 @@ XiChen 的 Conditional Hybrid Neural Operator（CHNO）在 Hybrid Neural Operato
 | 卫星观测算子 | 从预训练模型继续微调，以状态场＋姿态/扫描位置为输入模拟各卫星通道亮温，逐通道 L1 对真实亮温。 | **AMSU-A 5–10、MHS 3–5**；每个观测算子 **8×A100-40GB、约 13.3 h**。它提供状态→观测空间映射，不是直接输出分析。 | 单算子的 batch、更新数、LR、冻结范围，以及 v3 所引补表 S7/S8 的逐通道误差。 |
 | 同化模型 | 预训练权重作 DA 初始化；先用 GDAS prepbufr 训练，再将该 DA 权重按 **MHS→ASCAT→AMSU-A→SATWND** 顺序继续微调为级联。输入背景和 4DVar 代价梯度，输出潜在分析增量表征再解码分析场，以 ERA5 的变量/纬度加权 L1 监督。 | prepbufr DA 阶段 **8×A100-40GB、约 45 h**；只有相应观测算子与 DA 组件需要随新观测类型微调，是作者的模块化设计。 | 后四级各自时长、batch、LR、更新数、实际冻结参数列表。 |
 
-这一表格仅按[v3 方法 4.4–4.6](https://arxiv.org/html/2507.09202v3)填写正文可查值。它区分**天气模型的多步微调、观测算子的亮温监督、DA 模型的分析监督**，不能把“每个观测算子 13.3 h”误写成整个系统总训练时间，更不能把缺失的优化参数从相邻 FengWu/FuXi 工作抄来。作者代码声明指向的[公开仓库](https://github.com/wuxinwang1997/XiChen_1.40625deg)在本次核验时仅有 README/Licence，尚不足以重建完整训练命令；这是公开可复现性缺口，不是证明作者没有内部实现。
+这一表格仅按[v3 方法 4.4–4.6](https://arxiv.org/html/2507.09202v3)填写正文可查值。它区分**天气模型的多步微调、观测算子的亮温监督、DA 模型的分析监督**，不能把“每个观测算子 13.3 h”误写成整个系统总训练时间，更不能把缺失的优化参数从相邻 FengWu/FuXi 工作抄来。作者代码声明指向的[公开仓库](https://github.com/wuxinwang1997/XiChen_1.40625deg)在本次核验时仅有 `.gitignore`、README、LICENSE，尚不足以重建完整训练命令；这是公开可复现性缺口，不是证明作者没有内部实现。
 
 ### 2.3 变分梯度与实时性的可核验边界
 
@@ -67,6 +69,8 @@ XiChen 的 Conditional Hybrid Neural Operator（CHNO）在 Hybrid Neural Operato
 ## 3. 性能表：务必区分“好初值”与“自生初值”
 
 下表重排原文图 3、图 4、图 6 及正文给出的**明确数字/方向**，没有从曲线反推不可核验的小数。**同化循环**覆盖 2023 年 00/12 UTC，但**十天预报评分**只抽取 **50 个初值**、起报间隔 **336 h（14 d）**；正文写第一组从 2023-01-01 00 UTC、另一组从 2023-01-08 12 UTC 开始。因而不能把十天主图说成每天两次、全年约 730 次独立起报的验证。预报按 6 小时间隔输出，选取的 8 个变量对 ERA5 评分；ACC 气候态由 **2010–2021 ERA5 逐日/逐小时资料**计算，台风路径另以 IBTrACS 比较。[v3 方法 4.7、结果 2.2–2.4](https://arxiv.org/html/2507.09202v3)
+
+方法式 (7) 的 RMSE 是**先对每个起报样本作纬度加权的空间均方根，再对样本求平均**，不等于把所有时空格点先汇总平方误差后一次开方。方法式 (8) 的 ACC 则对每个样本求面积加权异常相关后平均；2010–2021 ERA5 小时气候态按有效日/小时配对。两类分数均以变量原始物理单位/float32 计算，不能拿网络内部标准化后的损失值作评测。图 3 的 GFS/IFS 与 XiChen 都相对 ERA5 场计算分析误差，但各系统原生分辨率、初值和同化资料量不同；即使评分网格统一，也不等于训练资源公平。[v3 方法式 (7)–(8)、Figure 3](https://arxiv.org/html/2507.09202v3)
 
 | 试验与原文位置 | 结果 | 正确解读 |
 | --- | --- | --- |

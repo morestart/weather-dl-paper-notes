@@ -136,7 +136,7 @@
 ### [数据同化](notes/assimilation/)
 
 - [GraphDOP 的同化诊断：观测敏感度、FSOI 与有害通道](notes/assimilation/78-graphdop-fsoi.md) — 2025 ECMWF 独立诊断论文；缩小的 2013–2022 观测配置、约 58M 参数、Z-score/自动微分/FSOI 公式、图 1–7 与 ATMS ch4/17 正贡献反例；明确并未运行新同化系统或验证 10–15 天技巧。
-- [XiChen：4DVar 梯度驱动观测同化](notes/assimilation/03-xichen.md) — v3 原文重读：49 字段 DABench/卫星重网格与亮温质控、CHNO 的 AFNO＋局地卷积分支、预报 Short→Medium/观测算子/级联 DA 的真实训练起点与披露成本、50 个初值而非全年每日十天评分；图 3–6 正反结果及补充材料/公开代码缺失的复现边界。
+- [XiChen：4DVar 梯度驱动观测同化](notes/assimilation/03-xichen.md) — v3 原文与 PDF 首页重读：49 字段 DABench/卫星重网格与亮温质控、CHNO 的 AFNO＋局地卷积分支、预报 Short→Medium/观测算子/级联 DA 的真实训练起点与披露成本、50 个初值而非全年每日十天评分；图 3–6 正反结果及补充材料/公开代码缺失的复现边界。2026-09-25 补核 PDF 首页署名与 arXiv 索引/PDF 元数据 **Tao Han/Tao Hao** 冲突、图 2 的 00/03 UTC 冲突，以及 RMSE/ACC 的逐起报平均定义。
 - [DiffDA：扩散式天气尺度同化](notes/assimilation/33-diffda.md) — 2026-09-25 对照 arXiv v3 正文/附录与作者固定源码深化：完整 82 场/13 气压层、48h 背景八步生成和逐层归一化/气候异常 kriging、GraphCast 预训练→条件 DDPM 的 AdamW/1⁄6 warmup/48 A100/20 epoch，以及另训 6h 循环模型的披露边界。原图 1–23 按单次分析、循环、分析后预报分开，表 1/2 核宽消融表明分析最优不保证下游预报最优；公开脚本默认 1°/small/1 epoch，不能冒充论文 0.25° 实验。模拟完整垂直柱与单次循环限制真实业务外推。
 - [FuXi-En4DVar：冻结伏羲底座的集合四维变分同化](notes/assimilation/68-fuxi-en4dvar.md) — 200 成员 Perlin 背景集合、6 小时合成观测、L-BFGS 控制量优化及图 1–4；不冒称已验证 15 天预报。
 - [FuXi-DA：FY-4B/AGRI 真卫星亮温的深度学习同化](notes/assimilation/69-fuxi-da.md) — 4 km→0.25° super-observation、三分支网络、6000 步训练与冻结 FuXi 的 60h 监督，区分订正收益和前 7 天的额外观测增益。
