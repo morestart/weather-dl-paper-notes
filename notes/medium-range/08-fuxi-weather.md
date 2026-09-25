@@ -1,6 +1,6 @@
 # FuXi Weather：从真实卫星观测到 10 天全球预报的循环系统
 
-> Xiuyu Sun、Xiaohui Zhong、Xiaoze Xu、Yuanqing Huang、Hao Li 等，*A data-to-forecast machine learning system for global weather*，*Nature Communications* 16, 6658，2025-07-19，[正式论文](https://doi.org/10.1038/s41467-025-62024-1)、[60 页正式补充材料](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-025-62024-1/MediaObjects/41467_2025_62024_MOESM1_ESM.pdf)。方法/逐 lead 数字对照[作者 arXiv:2408.05472v2（2024-11-18）](https://arxiv.org/html/2408.05472v2)；本笔记 2026-09-25 再核验正式版 Methods、补充材料 1–3、补图 3–8/25–26。预印本先于 2025 正式发表；若结论有差异以期刊正式版为准。
+> Xiuyu Sun、Xiaohui Zhong、Xiaoze Xu、Yuanqing Huang、Hao Li 等，*A data-to-forecast machine learning system for global weather*，*Nature Communications* 16, 6658，2025-07-19，[正式论文](https://doi.org/10.1038/s41467-025-62024-1)、[60 页正式补充材料](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-025-62024-1/MediaObjects/41467_2025_62024_MOESM1_ESM.pdf)、[作者 FuXi Weather Zenodo 推理归档](https://zenodo.org/records/15762985)。方法/逐 lead 数字对照[作者 arXiv:2408.05472v2（2024-11-18）](https://arxiv.org/html/2408.05472v2)；本笔记 2026-09-25 再核验正式版 Methods、补充材料 1–3、补图 3–8/25–26 及归档推理入口。预印本先于 2025 正式发表；若结论有差异以期刊正式版为准。
 
 ## 核心判断
 
@@ -55,6 +55,12 @@ GNSS-RO 折射率剖面比天气模式的垂直层密得多且高度稀疏。作
 
 这些超参来自[正式补充材料 3.1–3.3](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-025-62024-1/MediaObjects/41467_2025_62024_MOESM1_ESM.pdf)。联合损失在分析时次 `t=0` 与 **一个**6 h 预报时次 `t=1` 上监督，绝不能说 FuXi-DA 在训练时直接对 10 天所有步反传；10 天链条来自后续 FuXi-Short/FuXi-Medium 滚动。初始全零场是训练/循环初始化的特殊情况，不等于日常 DA 不用背景；前文“真实卫星观测到预报”仍有物理预报背景这一关键先验。
 
+### 2.3 已公开的 FuXi-DA 推理归档究竟能复现什么
+
+[论文指定的 Zenodo 记录](https://zenodo.org/records/15762985)公开一份约 **388.2 MB** 的 `FuXi-Weather-Code_.zip`，**并非只有受限权重**。核对该 ZIP 的完整目录索引（共 **17** 条）后，可见 `readme`、`run_da.sh`、`FuXiDA/da.py`、`fuxi_da_model/fuxi_da.onnx`、12 个 `mean/std_*.npy` 统计文件以及 `sample_data.tar.gz`；**没有 DA 训练入口、逐月回放训练程序或 FuXi-Short 微调脚本**。这支持复现**指定条件的一次同化推理**，不等于已公开能从原始卫星资料重跑论文的一年循环和全部训练。归档说明 ONNX 模型配置为 **2024-03-01–03-31** 的同化，而论文测试覆盖 2023-07 至 2024-06；单月归档权重不能未经核验代表所有逐月更新版。[Zenodo 描述与文件](https://zenodo.org/records/15762985)
+
+归档的 `readme` 为一次 2024-03-15 00 UTC 示例指定已**预处理为 NetCDF** 的 70 通道背景和 MWHS、MWTS、ATMS、MHS、AMSU-A、GNSS-RO 七路输入：五个亮温仪器及 GNSS 合计六类观测，加一条背景。微波输入格式 `(batch=1, time=8, channels, 720, 1440)`，空格点用 NaN，背景为 `(1,70,720,1440)`、已按 FuXi-DA 统计量归一化；GNSS 输入有 **512** 个高度切片。`da.py` 先按归档均值/标准差标准化亮温，把末一观测几何通道的角度取余弦，添加 `sin(lat)`/`cos(lon)`，由首个亮温通道是否 NaN 构造有效掩码并把 NaN 数值填 0，运行 `CPUExecutionProvider` 的 ONNX 一步推理，随后反标准化 70 通道并对最后一个 TP 通道作 `exp(x)−1`。**首通道掩码复制给整台仪器所有通道**是公开脚本的实际行为；逐通道缺测若不同，不能假定各自独立屏蔽。脚本的 `--save_dir` 参数未用于写结果，输出文件名硬编码为 `onnx_analysis_2024031500.npy`，复现实验需防止覆盖/日期误标。以上是**推理脚本行为**，不应反推训练时全部预处理都完全相同。[Zenodo 归档 readme/`FuXiDA/da.py`](https://zenodo.org/records/15762985)
+
 ## 3. 图表数据：变量和地区分开报告
 
 下表整理作者[预印本结果图 2–3 及其正文](https://arxiv.org/html/2408.05472v2)，与期刊摘要的总体表述交叉核对；只列可直接读取的数字或明确方向，不从曲线估小数。ACC>0.6 是大尺度异常型态的技巧阈值，非降水准确率。
@@ -65,7 +71,7 @@ GNSS-RO 折射率剖面比天气模式的垂直层密得多且高度稀疏。作
 | 全球 15 个高空变量/层目标 | **7/15** 的技巧时效延长，**6/15** 持平 | 其余目标并未报道为延长 |
 | 相对 IFS HRES 的 Z 场 RMSE 交叉 | Z300 **8.00 天**、Z500 **7.75 天**、Z850 **7.50 天**后较低 | 前期 IFS 更好，长 lead 误差优势可能混入平滑效应 |
 | 相对 IFS HRES 的湿度 R 场 RMSE 交叉 | R300 **2.00 天**、R500 **3.25 天**、R850 **2.25 天**后较低 | 变量强依赖微波湿度信息，不代表风/地表同样早获益 |
-| 中非 U850/T2m/MSL | 文中称多数 lead RMSE/ACC 优于 IFS HRES，ACC 在所示三变量 **10 天内 >0.6**；HRES 约 **2 天** | 区域 15°E–35°E、10°S–10°N；不可泛化全非洲或所有变量 |
+| 中非 U850/T2m/MSL | 图 5 三变量的部分或多数 lead 领先；正文明确说 **T2M 的 ACC** 在 **10 天内持续 >0.6**，HRES 的 T2M 约 **2 天** | 区域 15°E–35°E、10°S–10°N；**不能把 T2M 阈值外推到 U850/MSLP**，也不可泛化全非洲 |
 
 最有说服力的机制消融是：去掉背景场后分析误差增加，缺测卫星时还出现更尖锐误差峰，说明“只有观测即可预报”的说法过强；同化需要先验约束。单点 +5 K ATMS 扰动的湿度响应符合辐射传输的通道高度敏感性，却只能说明局部合理响应，不等于全球物理守恒。比较中非并未纳入当地高质量地面真值统一验证的所有气象量；ERA5 本身在观测稀疏地区也不完美。[正式论文图 1–4](https://www.nature.com/articles/s41467-025-62024-1)
 
@@ -73,6 +79,6 @@ GNSS-RO 折射率剖面比天气模式的垂直层密得多且高度稀疏。作
 
 ## 4. 与 XiChen/Aardvark 的差别及复现建议
 
-FuXi Weather 保留“背景预报 + 观测融合”的同化逻辑，以专用卫星分支接入真实亮温；XiChen 则试图用 4DVar 梯度作为跨观测通用接口。两者训练都依赖再分析，并都要谨慎拆开“外部优质初值”和“自生分析场”的成绩。相较纯从观测直接生成预报的 Aardvark，FuXi Weather 的背景场有助于稳定分析，但系统复杂度和观测维护也更高。完整复现应固定相同卫星下载/质控、资料到报时延、连续循环而非独立抽样、早期 spin-up、区域掩码和 HRES 版本；逐 lead 给出 70 通道与地面站/卫星独立观测的评价，尤其检验降水与强风极端。目前作者[正式论文代码声明](https://www.nature.com/articles/s41467-025-62024-1)表明 FuXi 基础代码公开，但 FuXi Weather 完整源代码有受限访问，独立复现条件并非完全满足。
+FuXi Weather 保留“背景预报 + 观测融合”的同化逻辑，以专用卫星分支接入真实亮温；XiChen 则试图用 4DVar 梯度作为跨观测通用接口。两者训练都依赖再分析，并都要谨慎拆开“外部优质初值”和“自生分析场”的成绩。相较纯从观测直接生成预报的 Aardvark，FuXi Weather 的背景场有助于稳定分析，但系统复杂度和观测维护也更高。完整复现应固定相同卫星下载/质控、资料到报时延、连续循环而非独立抽样、早期 spin-up、区域掩码和 HRES 版本；逐 lead 给出 70 通道与地面站/卫星独立观测的评价，尤其检验降水与强风极端。作者已经公开**FuXi Weather 的单月 ONNX 同化推理模型、脚本和样例**，应把它与尚未公开的**训练/微调代码、全年逐月权重和完整循环驱动程序**分开表述；目前独立复现全年结果的条件仍不完整。[期刊代码声明](https://www.nature.com/articles/s41467-025-62024-1)、[Zenodo 归档](https://zenodo.org/records/15762985)
 
 [返回仓库首页](../../README.md) · [返回总追踪表](../../气象大模型_中期预报论文追踪.md)
