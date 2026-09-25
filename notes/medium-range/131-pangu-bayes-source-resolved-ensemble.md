@@ -79,6 +79,8 @@ flowchart LR
 
 [Results 1.3、Figs. 3–5、Appendix F](https://arxiv.org/html/2511.14218v2)。局地一阶推导 `e(t+1)≈A[e(t)+η(t)]+Be(t−1)+GΔθ` 只解释两种扰动进入当前预报的通道；它是**切线线性近似**，与上面的全方差**精确但模型内定义**等式不是同一层级的证明。[Methods 3.3、Appendix G](https://arxiv.org/html/2511.14218v2)
 
+补图 **S8–S11** 是 2023 气旋群多次起报的 AU/EU 路径集合可视化，而非另一组独立测试或可直接读出总体百分比的统计表；其图注没有逐幅提供可核对的精确性能数。因此这里用 **S7 的 88 场统计**回答总体方向，用这些轨迹图只检查不同扰动轴产生的形状/转向多样性，避免挑选漂亮个例代表全体。[Appendix H、Figs. S8–S11](https://arxiv.org/html/2511.14218v2)
+
 ### 全球 2022 WeatherBench2：有优势，也有负面结果
 
 **Figure 6** 的四列为 T850/U850/T2M/U10，四行依次是集合均值的面积加权 RMSE、有限成员校正 CRPS、成员 spread、spread–skill ratio（SSR）；**S3** 扩展为 Z500/V850/V10/MSL。Pangu-Bayes 的最明确优势是 **T2M 在短至中等 lead 的 RMSE/CRPS**，U850/U10 及更多高空/风场则表现不均，FGN 在五天评测后端的多项指标更强。T2M SSR 在较短 lead 接近 1，但 U850/U10 多处 **SSR<1、欠离散**；不能用“总体 credible”替代逐变量校准结论。原文正文没有列可精确转录的逐日逐变量原始表值，本笔记也不从压缩曲线臆造小数。[Results 1.4、Figs. 6/S3](https://arxiv.org/html/2511.14218v2)
