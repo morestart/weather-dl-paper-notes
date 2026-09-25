@@ -95,7 +95,7 @@
 - [Chung 等：东亚六模式集合第 2–4 周降水后处理](notes/s2s/107-chung-east-asia-s2s-precip-postprocessing.md) — 2024 *Heliyon* 正式开放文献；六中心回报/同日对齐、16 输入场、TimeDistributed U-Net 与 50 epoch 参数、图 1–6 的 PCC/ACC/雨强事件正负结果。明确 MME 年份与模式回报期冲突、无雨 FAR 不改善及阈值空档。
 - [Weyn 等：业务型多架构集合的四周次季节预报](notes/s2s/106-weyn-operational-multimodel-ensemble.md) — 2024 arXiv v1；五模型×20 初值、ERA5→自回归→业务分析微调、20 年回报去偏和图 1–5 的正负证据。明确未订正 IFS 第 4 周优势约 4%，但订正后 IFS 反超约 3%，AI 仍欠离散且降水较弱。
 - [RISE-UNet：动力集合与土壤水记忆结合的第 1–5 周干旱预报](notes/s2s/101-rise-unet-subseasonal-soil-moisture.md) — 2025 *Nature Communications* 正式论文及 20 页补充材料；逐表拆解 GLEAM/ERA5/GEFSv12/ECMWF 配准、EX29 前两周动力输入和后续递推、四层网络/训练参数、图 2–8 与补图正负证据，注明中国/澳大利亚为重新训练及补表 S5 经纬度疑误。
-- [TianQuan-S2S：气候态融合与逐层噪声](notes/s2s/04-tianquan-s2s.md) — 2026-09-25 按 v6/附录补齐 ERA5 日均/双线性重网格、67 变量与表 10 的口径矛盾、七 lead 分支训练和 ViT/AdamW 参数；保留 Wind10 差于气候态及概率/确定性性能表。
+- [TianQuan-S2S：气候态融合与逐层噪声](notes/s2s/04-tianquan-s2s.md) — 2026-09-25 按 ICLR 2026 标记的 arXiv v6/26 页 PDF 核对 ERA5 日均/重网格、67 变量与表 10 冲突、七 lead 分支和 ViT/AdamW 训练。新增表 4、8–15/图 8–10 的数字及证据边界：Wind10 主表差于气候态，SME 实为有符号离差，图 10 风速轴 −270～−255 非物理，图 9 Z500 色标单位不符；附录 5/10 天 Z500 数值量级和跨表 Wind10 分数不可直接合并。代码/权重未公开，正式 OpenReview PDF 未直接取得。
 - [Xaurora：谱一致性 S2S 微调](notes/s2s/05-xaurora-egu-abstract.md) — 2026-09-25 复核 EGU/EXCLAIM 两份同题摘要仍无全文/数值；辨明 2026 EMS 同名但随机插值＋LoRA 的另一摘要，绝不把两者参数或结果混填。
 - [ESFM S2S 策略：多尾、LoRA 与慢变量注意力](notes/s2s/06-esfm-s2s-egu-abstract.md) — EGU 摘要及海报解读，记录 38 天/96 成员实例。
 - [基础模型+MSWEP 的 S2S 降水](notes/s2s/07-s2s-precip-egu-abstract.md) — EGU 摘要级解读，厘清九年比较计划与未披露的结果。
