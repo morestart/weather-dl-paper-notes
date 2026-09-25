@@ -1,6 +1,6 @@
 # OmniCast：空间—时间联合掩码生成怎样跨越中期与 S2S
 
-> Tung Nguyen、Tuan Pham、Troy Arcomano、Veerabhadra Kotamarthi、Ian Foster、Sandeep Madireddy、Aditya Grover，*OmniCast: A Masked Latent Diffusion Model for Weather Forecasting Across Time Scales*，[arXiv:2510.18707v1](https://arxiv.org/html/2510.18707)，2025-10-20；NeurIPS 2025 版本，阅读日期：2026-09-24。[代码/权重](https://github.com/tung-nd/omnicast)。早期 SeasonCast 属于同一研究路线，不重复计篇。
+> Tung Nguyen、Tuan Pham、Troy Arcomano、Veerabhadra Kotamarthi、Ian Foster、Sandeep Madireddy、Aditya Grover，*OmniCast: A Masked Latent Diffusion Model for Weather Forecasting Across Time Scales*，[arXiv:2510.18707v1](https://arxiv.org/html/2510.18707v1)，2025-10-20；NeurIPS 2025 版本，复核日期：2026-09-25。[作者公开仓库](https://github.com/tung-nd/omnicast)。早期 SeasonCast 属于同一研究路线，不重复计篇。
 
 ## 1. 核心机制与任务差异
 
@@ -28,7 +28,7 @@ flowchart LR
 | S2S | 1979–2020 训练、2021 验证、2022 测试；00 UTC 初值 | 逐 24 小时生成第 1–44 天瞬时场；论文主图仅核 T850、Z500、Q700 |
 | 中期 | 1979–2018 训练、2019 验证、2020 测试；00/12 UTC 初值 | 训练 12 小时两步，推理自回归至 15 天；WB2 集合 RMSE、CRPS、SSR |
 
-逐日**瞬时场**与 FuXi-S2S 所用的**日平均场**是不同标签；即使都称 3–6 周，也不能仅比较分数大小。论文没有完整列出每个变量的标准化常数、缺测插补和静态场处理配置，复现时需要以其公开代码和基准数据再核对。[实验 §5.1–5.2](https://arxiv.org/html/2510.18707v1)
+逐日**瞬时场**与 FuXi-S2S 所用的**日平均场**是不同标签；即使都称 3–6 周，也不能仅比较分数大小。原文明确给出 69 个变量、ERA5 来源、时间切分、分辨率及起报时刻，却**没有**完整列出每个变量的标准化常数、缺测插补、静态场或海陆掩膜处理配置；这些项目不能照搬其他 WeatherBench 2 模型。作者仓库当前可见 `train_image_klvae.py` 和 `weather_mae/` 等 VAE 相关文件，但本次未在仓库目录核实完整生成 Transformer 的训练入口、数据预处理配置及模型检查点，不能把该链接称作“代码与权重已开放”或据此声称端到端复现。[实验 §5.1–5.2](https://arxiv.org/html/2510.18707v1)、[作者仓库](https://github.com/tung-nd/omnicast)
 
 ### 模型细节与生成流程
 
@@ -70,9 +70,15 @@ Figure 8 的 15 天推理时间：0.25° OmniCast **29 秒/A100**，GenCast **48
 | 512 | 0.80 | 0.51 | 0.48 | 35.42 | 0.64 |
 | 1024（主配置） | **0.71** | **0.43** | **0.40** | **27.34** | **0.57** |
 
-这说明提高潜通道数能减轻 VAE 造成的损失，但同时会增加生成模型的 token 维度与训练负担；原文未把通道数继续提高到 1024 以上。附录图 10–11 还显示解码场有轻微平滑。原文早期尝试的 VQ-VAE 在同等空间压缩下重建误差约是连续 VAE 的 2–3 倍，逐帧 VAE 也优于其尝试的时空联合 VAE，解释了当前架构选择。[附录 A.1、B.1](https://arxiv.org/html/2510.18707v1)
+同一 Table 2 右半部另给出**中期 0.25° 主配置、潜通道 256** 的重建误差；不同分辨率的数字不可解释为同一数据上仅更换潜维度的消融：
 
-Figure 9 的四组消融还分别讨论了训练序列长度、解除掩码顺序和扩散采样温度：较短序列训练有利短期，却在 S2S 长滚动中退化；完全随机的时空解除掩码比按帧依序解除掩码有更好的集合离散度；温度太低导致欠离散，太高（如 1.5）又损害 RMSE/CRPS，作者选择 S2S 的 1.3。附录的初值高斯扰动实验（标准差 0–0.2）报告 RMSE/CRPS 对噪声相对稳定，但不能替代真正的观测误差或业务同化误差敏感性研究。[Figure 9、附录 B.3–B.4](https://arxiv.org/html/2510.18707v1)
+| 中期 0.25° VAE 潜通道数 | T2m | U10 | V10 | Z500 | T850 |
+|---|---:|---:|---:|---:|---:|
+| 256（主配置） | 0.55 | 0.25 | 0.23 | 18.77 | 0.37 |
+
+论文该表未逐列印单位，故这里只按原文转录“重建误差”，不自行指定五列的单位或误称它们为预报 RMSE。这两组数说明提高潜通道数能减轻低分辨率 VAE 的重建损失，但同时会增加生成模型的 token 维度与训练负担；原文未把通道数继续提高到 1024 以上。附录图 10–11 还显示解码场有轻微平滑。原文早期尝试的 VQ-VAE 在同等空间压缩下重建误差约是连续 VAE 的 2–3 倍，逐帧 VAE 也优于其尝试的时空联合 VAE，解释了当前架构选择。[附录 Table 2、B.1](https://arxiv.org/html/2510.18707v1)
+
+Figure 9 的四组消融还分别讨论了训练序列长度、解除掩码顺序和扩散采样温度：较短序列训练有利短期，却在 S2S 长滚动中退化；完全随机的时空解除掩码比按帧依序解除掩码有更好的集合离散度；温度太低导致欠离散，太高（如 1.5）又损害 RMSE/CRPS，作者选择 S2S 的 1.3。附录 Figure 12 比较 ClimaX 和 Stormer：后者短中期较准，但长滚动技巧下降；ClimaX 的各 lead 专门微调不能与 OmniCast 单模型全序列生成视作相同训练预算。Figure 13 的初值高斯扰动实验（标准差 0–0.2）报告 RMSE/CRPS 对噪声相对稳定，但不能替代真正的观测误差或业务同化误差敏感性研究。Figure 14 报告增加成员数改善 SSR 和集合均值 RMSE，多于每帧一次的解除掩码迭代对 RMSE 影响较小、SSR 略改善；因此“44 次迭代”是默认采样预算，不是架构不可改变的常数。[Figure 9、附录 B.2–B.4](https://arxiv.org/html/2510.18707v1)
 
 ## 3. 阅读判断
 
