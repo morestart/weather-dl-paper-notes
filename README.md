@@ -10,6 +10,7 @@
 
 ### [中期预报](notes/medium-range/)
 
+- [澳大利亚 AIFS/HRES 站点降水：逐点与空间感知概率订正](notes/medium-range/121-aifs-hres-spatial-precip-calibration.md) — 2026-07-11 JGR: Machine Learning and Computation 正式论文，2026-09-25 新增独立全文/Zenodo 代码精读。完整拆解 AWS 755 站分钟→小时→日 QC、两底座 0.1°/0.25° 重网格和交错月份切分、37 阈值 CRPS 的六个独立后处理器及 Table 1 六组层数/参数/epoch；区分站点 HRES CNN 优势、AIFS 三法接近、GPM 格点 CRA/FSS 反例，标出 CPU/GPU 与 CDF 单调性源码边界。底座不微调，最大只评 10 天。
 - [MAUSAM：南亚季风七种 AI 模型的观测真值评测](notes/medium-range/120-mausam-observation-focused-monsoon-benchmark.md) — 2025 arXiv、2026 JAMES 正式论文，2026-09-25 补漏独立精读；核对 458 站、IMD 约 6955 雨量计、IMERG/INSAT/IBTrACS 的格网与缺测处理，六个确定性模型 2021–2024 每天起报 15 天、GenCast-32/IFS-50 双台风及单起点 90 天统计压力测试。按期刊图 2–11 与附图分开解读站点 MAE 比 ERA5 高 30%–100%、AIFS/GraphCast 依年与 lead 排名交换、极端降水/谱/云和局地短板；明确本文不训练/微调新模型，并保留 2025 AIFS 初始化日和 INSAT 时窗冲突。
 - [SwAIther-Precip：AIFS 瑞士降水 6 天前段订正与概率降尺度](notes/medium-range/118-swaither-precip.md) — 2026 arXiv v2/作者配置及复现说明独立精读：2019–2023 AIFS-Single 11 字段＋CombiPrecip 1km 真值的数据处理、周交错切分、FiLM U-Net→CorrDiff 回归/扩散三网的训练与五阶段微调；转录附录 C 全部关键参数、Table 5 各 lead CRPS/CSI/FSS/MSE，解释 48% CRPS 改善和中尺度谱损失。正文三阶段与附录五阶段、归一化/粗化/Step 2 文件名及图 11 的 12/20 成员冲突单列；最多只验证 6 天，不冒称 10–15 天或 S2S。
 - [He 等：3D Swin＋潜空间扩散的东亚五天集合降水](notes/medium-range/114-he-high-resolution-ensemble-precipitation.md) — 2025 arXiv v1 全文/表 1/图 1–9；详解 ERA5＋CMPA 的 0.25°→0.05° 资料链、确定性/残差扩散分阶段训练、DDIM 300 步×11 成员、消融与 120h CSI；标明未披露训练超参、几何/公式冲突及无 10–15 天证据。
