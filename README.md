@@ -40,7 +40,7 @@
 - [GraphCast 球谐 AMSE：双重惩罚、五段微调与第十天谱技巧](notes/medium-range/82-amse-graphcast-spectral-loss.md) — 2025 ICML 独立损失方法；2016–2021 HRES-fc0/ERA5 降水配对、32,500 batch 五段微调、图 1–14 与表 2 全数值，区分 1250→160 km 的谱阈值、7.5 天 CRPS 和仅图示的十天谱诊断，保留降水与 MAE 对照的负面结果。
 - [第十天极端温度与大风：GraphCast、Pangu 与 IFS 的全球分区比较](notes/medium-range/81-olivetti-messori-extremes-2024.md) — 2024 GMD 正式独立评测；2020 年 702 次半业务起报、1/3/5/7/10 天、ERA5 1.5° 的三种尾部定义和图 1–12/附录 A–D，区分 GraphCast 平均优势、长 lead 尾部低估及 FuXi 的另套附录口径。
 - [GraphDOP 跨圈层案例：十天海冰亮温、飓风冷尾流与欧洲热浪](notes/medium-range/77-graphdop-coupled-earth-system.md) — 2025 独立 ECMWF 研究；2000–2020 多源观测、4×3h 潜推进/多窗微调、图 1–7 的第十天海冰案例与飓风/热浪负例，区分案例示范和未给出的全球统计评分。
-- [Aurora：异构地球系统预训练与中期天气](notes/medium-range/01-aurora.md) — 正式 62 页补注核验：最终 C4 六源与十源候选区别、ERA5/业务分析时间切分及标准化、13 亿参数/patch4→10 与 48→44 层适配、150k 步预训练和 0.25°/0.1° 分支全参数→LoRA 回放超参，补图 H6 正反结果、站点验证与 Ciarán 无 LoRA 个例的口径。
+- [Aurora：异构地球系统预训练与中期天气](notes/medium-range/01-aurora.md) — 正式 62 页补注核验：最终 C4 六源与十源候选区别、ERA5/业务分析时间切分及标准化、13 亿参数/patch4→10 与 48→44 层适配、150k 步预训练和 0.25°/0.1° 分支全参数→LoRA 回放超参。正式主图 1–5 逐幅解读：图 4 的四海盆台风路径增益、机构不同列不等样本和不显著格，图 5 的站点/网格分母与 Ciarán 关闭 LoRA、跨论文对照限制；另保留补图 H6 正反结果。
 - [Aurora 1.5：基础模型六段微调为中期集合](notes/medium-range/56-aurora-1-5.md) — 25 个单层字段、ERA5/IFS 六段训练参数、50/32 成员两套评测、极端温度负例与可靠性边界。
 - [Prithvi-Precip：卫星观测增强全球降水预报](notes/medium-range/57-prithvi-precip.md) — 仅到 96h 的前段方法；逐项说明异构卫星编码、数据处理、训练/二次微调、图 5–13 与独立雷达/雨量站负例。
 - [Prithvi WxC：掩码/天气联合预训练基础模型](notes/medium-range/58-prithvi-wxc.md) — 2024 原始底座与降水后续分篇；160 字段、两阶段训练/完整公开参数、降尺度与重力波微调、表 1 和图 1–11 的证据边界。
