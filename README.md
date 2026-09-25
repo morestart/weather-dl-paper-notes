@@ -90,7 +90,7 @@
 - [Weyn 等：业务型多架构集合的四周次季节预报](notes/s2s/106-weyn-operational-multimodel-ensemble.md) — 2024 arXiv v1；五模型×20 初值、ERA5→自回归→业务分析微调、20 年回报去偏和图 1–5 的正负证据。明确未订正 IFS 第 4 周优势约 4%，但订正后 IFS 反超约 3%，AI 仍欠离散且降水较弱。
 - [RISE-UNet：动力集合与土壤水记忆结合的第 1–5 周干旱预报](notes/s2s/101-rise-unet-subseasonal-soil-moisture.md) — 2025 *Nature Communications* 正式论文及 20 页补充材料；逐表拆解 GLEAM/ERA5/GEFSv12/ECMWF 配准、EX29 前两周动力输入和后续递推、四层网络/训练参数、图 2–8 与补图正负证据，注明中国/澳大利亚为重新训练及补表 S5 经纬度疑误。
 - [TianQuan-S2S：气候态融合与逐层噪声](notes/s2s/04-tianquan-s2s.md) — 2026-09-25 按 v6/附录补齐 ERA5 日均/双线性重网格、67 变量与表 10 的口径矛盾、七 lead 分支训练和 ViT/AdamW 参数；保留 Wind10 差于气候态及概率/确定性性能表。
-- [Xaurora：谱一致性 S2S 微调](notes/s2s/05-xaurora-egu-abstract.md) — EGU 摘要级解读；不填造性能数字。
+- [Xaurora：谱一致性 S2S 微调](notes/s2s/05-xaurora-egu-abstract.md) — 2026-09-25 复核 EGU/EXCLAIM 两份同题摘要仍无全文/数值；辨明 2026 EMS 同名但随机插值＋LoRA 的另一摘要，绝不把两者参数或结果混填。
 - [ESFM S2S 策略：多尾、LoRA 与慢变量注意力](notes/s2s/06-esfm-s2s-egu-abstract.md) — EGU 摘要及海报解读，记录 38 天/96 成员实例。
 - [基础模型+MSWEP 的 S2S 降水](notes/s2s/07-s2s-precip-egu-abstract.md) — EGU 摘要级解读，厘清九年比较计划与未披露的结果。
 - [PBC：S2S 概率偏差订正](notes/s2s/10-pbc-subseasonal.md) — 2026-09-25 按 v3 方法/算法和作者源码补齐五分位 CDF 的资料/阈值链、20 年滑窗与三年调参、逐格五特征最小二乘、四类不同成员/发行协议及显著性样本数；区分 PBC 统计拟合和 PoET 神经训练，标注滞后公式符号冲突。

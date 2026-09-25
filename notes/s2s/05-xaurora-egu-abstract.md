@@ -1,6 +1,6 @@
 # Xaurora：Aurora 的谱一致性 S2S 微调（EGU 摘要解读）
 
-> Eliot Walt、Wessel Bruinsma、Maurice Schmeits、Efstratios Gavves、Dim Coumou，*Xaurora: Advancing subseasonal-to-seasonal forecasting by fine-tuning foundation weather models with spectral consistency*，[EGU25-9956 官方摘要](https://doi.org/10.5194/egusphere-egu25-9956)，会议 2025-04-27 至 05-02；页面标注 2025-03-15 更新。阅读于 2026-09-24。**资料级别仅为会议摘要，不是完整研究论文**；以下不会填充摘要未公开的表格或网络超参数。
+> Eliot Walt、Wessel Bruinsma、Maurice Schmeits、Efstratios Gavves、Dim Coumou，*Xaurora: Advancing subseasonal-to-seasonal forecasting by fine-tuning foundation weather models with spectral consistency*，[EGU25-9956 官方摘要](https://doi.org/10.5194/egusphere-egu25-9956)，会议 2025-04-27 至 05-02；页面标注 2025-03-15 更新。初读 2026-09-24，2026-09-25 复核 EGU/EXCLAIM 原件和同名后续摘要。**资料级别仅为会议摘要，不是完整研究论文**；以下不会填充摘要未公开的表格或网络超参数。
 
 ## 研究问题与最小可核验结论
 
@@ -42,6 +42,14 @@ flowchart LR
 
 ## 下一步检索与评审清单
 
-首先查作者新预印本或正式论文是否沿用 Xaurora 名称，并区分其他同名或后续不同作者组合的工作。完整稿出现后应核对：频域损失公式和谱段、可预报信号标签的定义、与原 Aurora 相同起报与训练期资料、2/3/4/6 周技巧曲线、概率集合生成与 CRPS/可靠性、MJO/ENSO/NAO 指数以及跨年份显著性。目前这些均属**未公开证据**，不能用“摘要说会评估”替代已完成评估结果。
+### 同名材料的版本辨识（2026-09-25 核验）
+
+| 材料 | 人员、实际方案 | 对本条能提供的新增证据 |
+|---|---|---|
+| [2025 EGU25-9956](https://meetingorganizer.copernicus.org/EGU25/EGU25-9956.html) | Walt、Bruinsma、Schmeits、Gavves、Coumou；**lead 条件回归头＋频域解码器/谱一致性微调** | 本条的唯一官方方法来源；只有文字摘要，没有实验表或具体超参数。 |
+| [2025 EXCLAIM Symposium 日程册](https://ethz.ch/content/dam/ethz/special-interest/projects/exclaim-dam/documents/exclaim-symposium-2025---document-archive/EXCLAIM%20Symposium%20-%20Program%20brochure.pdf) | 同一标题、同一五位作者；列于 2025-06-02 的 15:15–15:30 口头报告 | 证明该工作另有学术报告记录，**日程册没有额外方法/结果**，不构成第二篇完整论文或独立复验。 |
+| [2026 EMS2026-650](https://meetingorganizer.copernicus.org/EMS2026/EMS2026-650.html) | Walt、Kofinas、Mücke、Gavves、Coumou；标题改为 *Probabilistic Weather Forecasting with Foundation Models and Stochastic Interpolants*；公开方法为**随机插值框架＋LoRA 微调 Aurora 的漂移预测器** | 同名“Xaurora”但作者组合与方法重点均改变；摘要没有说明它是否继承 2025 年的频域解码器。**不能把 LoRA/随机插值训练细节倒灌到本条，也不能把其“竞争性”定性成绩冒充 2025 S2S 数值。** |
+
+本轮按题名、第一作者、合作作者及 arXiv/官方会议页面检索，**未找到可公开核验的 2025 谱一致性 Xaurora 完整论文或原始性能表**；这里的结论只限本轮可检索公开资料，不等于论文永远不会发表。完整稿若出现，应核对频域损失公式/谱段、可预报信号标签、基座版别、训练/验证/测试年份、2/3/4/6 周逐 lead 技巧、概率成员构成及 CRPS/可靠性、遥相关指数和显著性。当前可给出的是**摘要的完整证据边界**，不是凭空补出“详细训练参数”的论文精读。[EGU 官方摘要](https://meetingorganizer.copernicus.org/EGU25/EGU25-9956.html)；[EMS 2026 官方摘要](https://meetingorganizer.copernicus.org/EMS2026/EMS2026-650.html)。
 
 [返回仓库首页](../../README.md) · [返回总追踪表](../../气象大模型_中期预报论文追踪.md)
